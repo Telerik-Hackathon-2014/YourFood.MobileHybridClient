@@ -1,0 +1,36 @@
+<ion-view title="{{product.name}}">
+    <ion-content class="has-header">
+        <ion-list>
+            <div class="row">
+                <div class="col col-33 img-container">
+                    <img src="{{product.image}}">
+                </div>
+                <div class="col">
+                    <h4>{{product.name}}</h4>
+                    <h5>{{product.categoryName}}</h5>
+                </div>
+            </div>
+            <div class="item item-body">
+                <h2>Average freshness : <strong>{{product.lifetime}}</strong> days</h2>
+                <h2>Units : {{product.unit}}</h2>
+                <br/>
+                <div class="range range-positive">
+                    <i class="icon ion-ios7-download-outline"></i>
+                    <input type="range" name="volume" min="0" max="100" value="33">
+                    <i class="icon ion-ios7-upload-outline"></i>
+                </div>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-social-buffer"></i>
+                    To fridge
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-social-buffer-outline"></i>
+                    To list
+                </a>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>

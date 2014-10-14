@@ -3,25 +3,53 @@ var app = angular.module('app', ['ionic']);
 app.config(function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider
-            .state('recipes', {
-                url: "/recipes",
-                templateUrl: "templates/recipes.html",
-                controller: 'RecipesCtrl'
-            })
             .state('tabs', {
                 url: "/tab",
                 abstract: true,
                 templateUrl: "templates/tabs.html"
             })
-            .state('tabs.home', {
-                url: "/home",
+            .state('recipes', {
+                url: "/recipes",
+                templateUrl: "templates/recipes/recipes.html",
+                controller: 'RecipesCtrl'
+            })
+            .state('tabs.products', {
+                url: "/products",
                 views: {
-                    'home-tab': {
-                        templateUrl: "templates/home.html",
-                        controller: 'HomeTabCtrl'
+                    'products-tab': {
+                        templateUrl: "templates/products/products.html",
+                        controller: 'ProductsCtrl'
                     }
                 }
             })
+            .state('tabs.product', {
+                url: "/products/:id",
+                views: {
+                    'products-tab': {
+                        templateUrl: "templates/products/product-details.html",
+                        controller: 'ProductDetailsCtrl'
+                    }
+                }
+            })
+            .state('tabs.recipes', {
+                url: "/recipes",
+                views: {
+                    'recipes-tab': {
+                        templateUrl: "templates/recipes/recipes.html",
+                        controller: 'RecipesCtrl'
+                    }
+                }
+            })
+            .state('tabs.recipe', {
+                url: "/recipes/:id",
+                views: {
+                    'recipes-tab': {
+                        templateUrl: "templates/recipes/recipe-details.html",
+                        controller: 'RecipeDetailsCtrl'
+                    }
+                }
+            })
+            //-------------------------------------------
             .state('tabs.facts', {
                 url: "/facts",
                 views: {
@@ -51,15 +79,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 views: {
                     'about-tab': {
                         templateUrl: "templates/nav-stack.html"
-                    }
-                }
-            })
-            .state('tabs.recipes', {
-                url: "/recipes",
-                views: {
-                    'about-tab': {
-                        templateUrl: "templates/recipes.html",
-                        controller: 'RecipesCtrl'
                     }
                 }
             });
