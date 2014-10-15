@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ionic']);
+var app = angular.module('app', ['ionic', 'ngRoute', 'ngCookies']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -12,6 +12,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 url: "/recipes",
                 templateUrl: "templates/recipes/recipes.html",
                 controller: 'RecipesCtrl'
+            })
+            .state('login', {
+                url: "/login",
+                templateUrl: "templates/account/login.html",
+                controller: 'LoginCtrl'
+            })
+            .state('signup', {
+                url: "/signup",
+                templateUrl: "templates/account/signup.html",
+                controller: 'SignUpCtrl'
             })
             .state('tabs.products', {
                 url: "/products",
@@ -83,16 +93,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 }
             });
 
-        $urlRouterProvider.otherwise("/tab/home");
+        $urlRouterProvider.otherwise("/tab/products");
 
     })
-    .controller('NavCtrl', function ($scope, $ionicSideMenuDelegate) {
-        $scope.showMenu = function () {
-            $ionicSideMenuDelegate.toggleLeft();
-        };
-        $scope.showRightMenu = function () {
-            $ionicSideMenuDelegate.toggleRight();
-        };
-    })
+    .constant('baseUrl', 'http://yourfood-services.apphb.com/')
+    .constant('author', 'YourFoodTm')
+    .constant('copyright', 'YourFoodTm')
     .controller('HomeTabCtrl', function ($scope) {
     });
