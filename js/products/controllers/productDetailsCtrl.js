@@ -1,13 +1,13 @@
 'use strict';
 
-app.controller('ProductDetailsCtrl', function ($scope, $stateParams, productsData) {
-//    if (!identity.isAuthenticated()) {
-//        $location.path('/login');
-//        return;
-//    }
-//
-//    $scope.currentUserShoppingListId = identity.currentUser().shoppingList;
-//    $scope.isLogged = identity.isAuthenticated();
+app.controller('ProductDetailsCtrl', function ($scope, $stateParams, productsData, identity) {
+    if (!identity.isAuthenticated()) {
+        $location.path('/login');
+        return;
+    }
+
+//    $scope.currentUserShoppingListId = identity.getCurrentUser().shoppingList;
+    $scope.isLogged = identity.isAuthenticated();
 
     $scope.productId = $stateParams.id;
 

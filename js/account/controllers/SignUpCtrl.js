@@ -1,9 +1,12 @@
 'use strict';
 
 app.controller('SignUpCtrl',
-    function ($scope, $location, auth) {
+    function ($scope, $location, auth, identity) {
+
+        $scope.isLogged = identity.isAuthenticated();
 
         $scope.signup = function (user, signUpForm) {
+            console.log(user);
             if (signUpForm.$valid) {
                 var newUser = {
                     "Email": user.Email,
@@ -16,7 +19,7 @@ app.controller('SignUpCtrl',
 
                 auth.signup(newUser).then(function (success) {
                     if (success) {
-                        console.log('Successful login!');
+                        $location.path('/login');
                     }
                     else {
                         $scope.error = 'Username/Password combination is not valid!';
@@ -26,10 +29,5 @@ app.controller('SignUpCtrl',
             else {
                 console.log('Username and password are required fields!')
             }
-
-//            auth.signup(newUser).success(function (res) {
-//                console.log("Successfully registered !");
-//                $scope.registered = true;
-//            });
         }
     });

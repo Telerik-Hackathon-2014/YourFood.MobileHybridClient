@@ -3,12 +3,13 @@
 app.controller('LoginCtrl',
     function ($scope, $location, identity, auth) {
         $scope.identity = identity;
+        $scope.loginActive = true;
 
         $scope.login = function (user, loginForm) {
             if (loginForm.$valid) {
-                auth.login(user).then(function(success) {
+                auth.login(user).then(function (success) {
                     if (success) {
-                        console.log('Successful login!');
+                        $location.path('/products');
                     }
                     else {
                         $scope.error = 'Username/Password combination is not valid!';
@@ -21,7 +22,7 @@ app.controller('LoginCtrl',
         };
 
         $scope.logout = function () {
-            auth.logout().then(function() {
+            auth.logout().then(function () {
                 console.log('Successful logout!');
                 if ($scope.user) {
                     $scope.user.email = '';
@@ -30,8 +31,11 @@ app.controller('LoginCtrl',
                 }
 
                 $scope.loginForm.$setPristine();
-                $location.path('/');
+                $location.path('/login');
             })
         };
 
+        $scope.changeToSignUp = function () {
+            $scope.loginActive = false;
+        }
     });

@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('auth', function ($http, $q, identity, authorization, baseUrl) {
+app.factory('auth', function ($http, $q, $location, identity, authorization, baseUrl) {
     var usersApi = baseUrl + 'api/account';
 
     return {
@@ -10,6 +10,7 @@ app.factory('auth', function ($http, $q, identity, authorization, baseUrl) {
             $http.post(usersApi + '/register', user)
                 .success(function () {
                     deferred.resolve();
+                    $location.path('/login');
                 }, function (response) {
                     deferred.reject(response);
                 });

@@ -1,13 +1,13 @@
 'use strict';
 
-app.controller('ProductsCtrl', function ($scope, $location, productsData) {
-//    if (!identity.isAuthenticated()) {
-//        $location.path('/login');
-//        return;
-//    }
-//
-//    $scope.identity = identity;
-//    $scope.isLogged = identity.isAuthenticated();
+app.controller('ProductsCtrl', function ($scope, $location, productsData, identity) {
+    if (!identity.isAuthenticated()) {
+        $location.path('/login');
+        return;
+    }
+
+    $scope.identity = identity;
+    $scope.isLogged = identity.isAuthenticated();
 
     $scope.filter = {};
     $scope.filter.page = $scope.filter.page || 1;

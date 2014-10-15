@@ -2,12 +2,12 @@
 
 app.controller('RecipesCtrl',
     function ($scope, $location, recipesData) {
-//        if (!identity.isAuthenticated()) {
-//            $location.path('/login');
-//            return;
-//        }
-//
-//        $scope.isLogged = identity.isAuthenticated();
+        if (!identity.isAuthenticated()) {
+            $location.path('/login');
+            return;
+        }
+
+        $scope.isLogged = identity.isAuthenticated();
 
         // Filter
         $scope.filter = {};

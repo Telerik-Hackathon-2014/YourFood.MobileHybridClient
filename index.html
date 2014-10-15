@@ -26,6 +26,8 @@
 
     <script src="js/navigation/navCtrl.js" ></script>
 
+    <script src="js/main/mainCtrl.js"></script>
+
     <script src="js/account/controllers/LoginCtrl.js"></script>
     <script src="js/account/controllers/SignUpCtrl.js"></script>
     <script src="js/account/services/auth.js"></script>
@@ -45,9 +47,9 @@
 
 <body ng-app="app">
 
-<ion-side-menus>
+<ion-side-menus ng-controller="MainCtrl">
 
-    <ion-side-menu-content ng-controller="NavCtrl">
+    <ion-side-menu-content ng-controller="NavCtrl" >
         <ion-nav-bar class="bar-positive">
             <ion-nav-back-button class="button-icon ion-arrow-left-c">
             </ion-nav-back-button>
@@ -64,7 +66,7 @@
         <ion-nav-view animation="slide-left-right"></ion-nav-view>
     </ion-side-menu-content>
 
-    <ion-side-menu side="left">
+    <ion-side-menu side="left" ng-show="isLogged()">
         <ion-header-bar class="bar bar-header bar-assertive">
             <h1 class="title">Left Menu</h1>
         </ion-header-bar>
@@ -83,7 +85,7 @@
         </ion-content>
     </ion-side-menu>
 
-    <ion-side-menu side="right">
+    <ion-side-menu side="right" ng-controller="LoginCtrl" ng-show="isLogged()">
         <ion-header-bar class="bar bar-header bar-dark">
             <h1 class="title">Right Menu</h1>
         </ion-header-bar>
@@ -93,10 +95,7 @@
                     <a class="item" menu-close nav-clear href="#/recipes">Recipes</a>
                 </li>
                 <li>
-                    <a class="item" menu-close nav-clear href="#/login">Login</a>
-                </li>
-                <li>
-                    <a class="item" menu-close nav-clear href="#/signup">Sign up</a>
+                    <a class="item" menu-close nav-clear href="#/login" ng-click="logout()">Logout</a>
                 </li>
             </ul>
         </ion-content>

@@ -1,7 +1,7 @@
 {
-  "name": "myapp",
+  "name": "YourFoodTm",
   "version": "1.0.0",
-  "description": "myapp: An Ionic project",
+  "description": "YourFood app: An Ionic hybrid project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",
