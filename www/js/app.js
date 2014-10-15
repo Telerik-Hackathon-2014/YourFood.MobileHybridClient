@@ -7,28 +7,28 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('tabs', {
             url: "/tab",
             abstract: true,
-            templateUrl: "templates/tabs.html"
+            templateUrl: "www/templates/tabs.html"
         })
         .state('recipes', {
             url: "/recipes",
-            templateUrl: "templates/recipes/recipes.html",
+            templateUrl: "www/templates/recipes/recipes.html",
             controller: 'RecipesCtrl'
         })
         .state('login', {
             url: "/login",
-            templateUrl: "templates/account/login.html",
+            templateUrl: "www/templates/account/login.html",
             controller: 'LoginCtrl'
         })
         .state('signup', {
             url: "/signup",
-            templateUrl: "templates/account/signup.html",
+            templateUrl: "www/templates/account/signup.html",
             controller: 'SignUpCtrl'
         })
         .state('tabs.products', {
             url: "/products",
             views: {
                 'products-tab': {
-                    templateUrl: "templates/products/products.html",
+                    templateUrl: "www/templates/products/products.html",
                     controller: 'ProductsCtrl'
                 }
             }
@@ -37,7 +37,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/products/:id",
             views: {
                 'products-tab': {
-                    templateUrl: "templates/products/product-details.html",
+                    templateUrl: "www/templates/products/product-details.html",
                     controller: 'ProductDetailsCtrl'
                 }
             }
@@ -46,7 +46,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/recipes",
             views: {
                 'recipes-tab': {
-                    templateUrl: "templates/recipes/recipes.html",
+                    templateUrl: "www/templates/recipes/recipes.html",
                     controller: 'RecipesCtrl'
                 }
             }
@@ -55,7 +55,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/recipes/:id",
             views: {
                 'recipes-tab': {
-                    templateUrl: "templates/recipes/recipe-details.html",
+                    templateUrl: "www/templates/recipes/recipe-details.html",
                     controller: 'RecipeDetailsCtrl'
                 }
             }
@@ -65,7 +65,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/facts",
             views: {
                 'home-tab': {
-                    templateUrl: "ftemplates/acts.html"
+                    templateUrl: "www/ftemplates/acts.html"
                 }
             }
         })
@@ -73,7 +73,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/facts2",
             views: {
                 'home-tab': {
-                    templateUrl: "templates/facts2.html"
+                    templateUrl: "www/templates/facts2.html"
                 }
             }
         })
@@ -81,7 +81,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/about",
             views: {
                 'about-tab': {
-                    templateUrl: "templates/about.html"
+                    templateUrl: "www/templates/about.html"
                 }
             }
         })
@@ -89,7 +89,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/navstack",
             views: {
                 'about-tab': {
-                    templateUrl: "templates/nav-stack.html"
+                    templateUrl: "www/templates/nav-stack.html"
                 }
             }
         });
