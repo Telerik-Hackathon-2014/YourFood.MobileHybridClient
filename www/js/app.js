@@ -24,6 +24,21 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: "www/templates/account/signup.html",
             controller: 'SignUpCtrl'
         })
+        .state('profile', {
+            url: "/profile",
+            templateUrl: "www/templates/profile/profile.html",
+            controller: 'ProfileCtrl'
+        })
+        .state('catalog-products', {
+            url: "/catalog-products",
+            templateUrl: "www/templates/catalog-products/catalog-products.html",
+            controller: 'CatalogProductsCtrl'
+        })
+        .state('catalog-product-details', {
+            url: "/catalog-products/:id",
+            templateUrl: "www/templates/catalog-products/catalog-product-details.html",
+            controller: 'CatalogProductDetailsCtrl'
+        })
         .state('tabs.products', {
             url: "/products",
             views: {

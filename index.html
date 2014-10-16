@@ -38,6 +38,13 @@
     <script src="www/js/recipes/controllers/recipeDetailsCtrl.js"></script>
     <script src="www/js/recipes/services/recipesData.js"></script>
 
+    <script src="www/js/catalog-products/controllers/catalogProductsCtrl.js"></script>
+    <script src="www/js/catalog-products/controllers/catalogProductDetailsCtrl.js"></script>
+    <script src="www/js/catalog-products/services/catalogProductsData.js"></script>
+
+    <script src="www/js/profile/controllers/profileCtrl.js"></script>
+    <script src="www/js/profile/services/profileData.js"></script>
+
     <script src="www/js/products/controllers/productsCtrl.js"></script>
     <script src="www/js/products/controllers/productDetailsCtrl.js"></script>
     <script src="www/js/products/services/productsData.js"></script>
@@ -141,6 +148,9 @@
         </ion-header-bar>
         <ion-content>
             <ul class="list">
+                <li>
+                    <a class="item" menu-close nav-clear href="#/profile">Profile</a>
+                </li>
                 <li>
                     <a class="item" menu-close nav-clear href="#/login" ng-click="logout()">Logout</a>
                 </li>
