@@ -60,6 +60,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('tabs.shopping-list', {
+            url: "/shopping-list",
+            views: {
+                'shopping-list-tab': {
+                    templateUrl: "www/templates/shopping-lists/shopping-list.html",
+                    controller: 'ShoppingListCtrl'
+                }
+            }
+        })
         // ---- Admin part
         .state('create-product', {
             url: "/create-product",
@@ -81,23 +90,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: "www/templates/admin/recipes/create-recipes-category.html",
             controller: 'AdminCreateRecipesCategoryCtrl'
         })
-        //-------------------------------------------
-        .state('tabs.about', {
-            url: "/about",
-            views: {
-                'about-tab': {
-                    templateUrl: "www/templates/about.html"
-                }
-            }
-        })
-        .state('tabs.navstack', {
-            url: "/navstack",
-            views: {
-                'about-tab': {
-                    templateUrl: "www/templates/nav-stack.html"
-                }
-            }
-        });
 
     $urlRouterProvider.otherwise("/tab/products");
 

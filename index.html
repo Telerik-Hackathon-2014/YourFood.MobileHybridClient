@@ -43,6 +43,9 @@
     <script src="www/js/products/services/productsData.js"></script>
     <script src="www/js/products/filters/productsRowFilter.js"></script>
 
+    <script src="www/js/shopping-lists/controllers/shoppingListCtrl.js"></script>
+    <script src="www/js/shopping-lists/services/shoppingListData.js"></script>
+
     <script src="www/js/directives/fileread.js"></script>
 
     <!-- admin scripts -->
@@ -53,6 +56,7 @@
     <script src="www/js/admin/recipes/controllers/adminCreateRecipeCtrl.js"></script>
     <script src="www/js/admin/recipes/controllers/adminCreateRecipesCategoryCtrl.js"></script>
     <script src="www/js/admin/recipes/services/adminRecipesData.js"></script>
+
 
 </head>
 
@@ -65,12 +69,12 @@
             <ion-nav-back-button class="button-icon ion-arrow-left-c">
             </ion-nav-back-button>
         </ion-nav-bar>
-        <ion-nav-buttons side="left">
+        <ion-nav-buttons side="left" ng-show="isLogged()">
             <button class="button button-icon button-clear ion-navicon" ng-click="showMenu()">
             </button>
         </ion-nav-buttons>
 
-        <ion-nav-buttons side="right">
+        <ion-nav-buttons side="right" ng-show="isLogged()">
             <button class="button button-icon button-clear ion-ios7-gear" ng-click="showRightMenu()">
             </button>
         </ion-nav-buttons>
