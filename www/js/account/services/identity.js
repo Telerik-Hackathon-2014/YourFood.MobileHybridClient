@@ -25,6 +25,12 @@ app.factory('identity', function($cookieStore) {
         },
         isAuthenticated: function() {
             return !!this.getCurrentUser();
+        },
+        isAuthorizedForRole: function (role) {
+            return !!this.getCurrentUser() && this.getCurrentUser().roles.indexOf(role) > -1;
+        },
+        isAdmin: function () {
+            return this.isAuthorizedForRole('Admin');
         }
     }
 });

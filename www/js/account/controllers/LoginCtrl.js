@@ -1,9 +1,15 @@
 'use strict';
 
 app.controller('LoginCtrl',
-    function ($scope, $location, identity, auth) {
+    function ($scope, $location, identity, auth, productsData) {
         $scope.identity = identity;
         $scope.loginActive = true;
+
+        $scope.isAdmin = function () {
+            // TODO: Uncomment when roles are active
+            return identity.isAdmin();
+//            return true;
+        };
 
         $scope.login = function (user, loginForm) {
             if (loginForm.$valid) {
@@ -30,12 +36,11 @@ app.controller('LoginCtrl',
                     $scope.user.password = '';
                 }
 
-                $scope.loginForm.$setPristine();
                 $location.path('/login');
             })
         };
 
         $scope.changeToSignUp = function () {
             $scope.loginActive = false;
-        }
+        };
     });

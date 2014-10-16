@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('RecipesCtrl',
-    function ($scope, $location, recipesData) {
+    function ($scope, $location, recipesData, identity) {
         if (!identity.isAuthenticated()) {
             $location.path('/login');
             return;

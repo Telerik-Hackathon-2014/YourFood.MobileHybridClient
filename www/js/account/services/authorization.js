@@ -1,6 +1,7 @@
 'use strict';
 
-app.factory('authorization', function(identity) {
+app.factory('authorization',['identity', function(identity) {
+    console.log(identity);
     return {
         getAuthorizationHeader: function() {
             return {
@@ -8,4 +9,4 @@ app.factory('authorization', function(identity) {
             }
         }
     }
-});
+}]);

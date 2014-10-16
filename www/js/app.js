@@ -60,23 +60,28 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        // ---- Admin part
+        .state('create-product', {
+            url: "/create-product",
+            templateUrl: "www/templates/admin/products/create-product.html",
+            controller: 'AdminCreateProductCtrl'
+        })
+        .state('create-products-category', {
+            url: "/create-products-category",
+            templateUrl: "www/templates/admin/products/create-products-category.html",
+            controller: 'AdminCreateProductsCategoryCtrl'
+        })
+        .state('create-recipe', {
+            url: "/create-recipe",
+            templateUrl: "www/templates/admin/recipes/create-recipe.html",
+            controller: 'AdminCreateRecipeCtrl'
+        })
+        .state('create-recipes-category', {
+            url: "/create-recipes-category",
+            templateUrl: "www/templates/admin/recipes/create-recipes-category.html",
+            controller: 'AdminCreateRecipesCategoryCtrl'
+        })
         //-------------------------------------------
-        .state('tabs.facts', {
-            url: "/facts",
-            views: {
-                'home-tab': {
-                    templateUrl: "www/ftemplates/acts.html"
-                }
-            }
-        })
-        .state('tabs.facts2', {
-            url: "/facts2",
-            views: {
-                'home-tab': {
-                    templateUrl: "www/templates/facts2.html"
-                }
-            }
-        })
         .state('tabs.about', {
             url: "/about",
             views: {

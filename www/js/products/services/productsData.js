@@ -1,12 +1,12 @@
 'use strict';
 
 app.factory('productsData',
-    function ($http) {
+    function ($http, identity, authorization) {
         var productsApi = 'http://yourfood.herokuapp.com/api/catalog-products';
 
         return{
             getAllProducts: function (filter, success) {
-                var url = productsApi + '?page=' + (filter.page -1);
+                var url = productsApi + '?page=' + (filter.page - 1);
 
                 if (filter.category) {
                     url += '&orderByCategory=true';

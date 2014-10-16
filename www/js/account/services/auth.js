@@ -27,6 +27,7 @@ app.factory('auth', function ($http, $q, $location, identity, authorization, bas
                     }
                 }).success(function (response) {
                     if (response["access_token"]) {
+                        console.log(response);
                         identity.setCurrentUser(response);
                         deferred.resolve(true);
                     }
@@ -41,6 +42,7 @@ app.factory('auth', function ($http, $q, $location, identity, authorization, bas
             var deferred = $q.defer();
 
             var headers = authorization.getAuthorizationHeader();
+
             $http.post(usersApi + '/logout', {}, { headers: headers })
                 .success(function () {
                     identity.setCurrentUser(undefined);

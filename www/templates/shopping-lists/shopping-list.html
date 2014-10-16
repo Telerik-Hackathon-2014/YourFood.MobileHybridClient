@@ -1,0 +1,12 @@
+<ion-view title="Shopping list">
+    <ion-content class="has-header">
+        <ion-list>
+            <a class="item item-avatar" ng-repeat="product in shoppingList">
+                <img src="{{product.ImageUrl}}"/>
+                <strong>{{product.Name}}</strong>
+                <br/>
+                <small>{{product.Quantity}}</small>
+            </a>
+        </ion-list>
+    </ion-content>
+</ion-view>
