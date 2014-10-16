@@ -1,3 +1,5 @@
+<p align="center"><a href="http://academy.telerik.com/"><img src="http://iteventz.bg/image_cache/0f3a250b9f1f43d193c954b3778472eb.jpg" /></a></p>
+
 ## What's this
 This is an addon starter template for the [Ionic Framework](http://ionicframework.com/).
 I'm trying to make SideMenu and Tabs working together the best way, keeping the total separation between views. There's a fork example (and many others you can find on codepen) that injects the view into the <tab> code. It's [here](http://codepen.io/benallfree/pen/JLehx), but it's not the proof of this repo.
