@@ -24,6 +24,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: "www/templates/account/signup.html",
             controller: 'SignUpCtrl'
         })
+        .state('stats', {
+            url: "/stats",
+            templateUrl: "www/templates/profile/stats.html"
+        })
         .state('profile', {
             url: "/profile",
             templateUrl: "www/templates/profile/profile.html",
