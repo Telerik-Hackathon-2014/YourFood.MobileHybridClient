@@ -1,8 +1,8 @@
 'use strict';
 
 app.factory('recipesData',
-    function ($http) {
-        var recipesApi = 'http://yourfood.herokuapp.com/api/recipes';
+    function ($http, baseUrl) {
+        var recipesApi = baseUrl + 'recipes';
 
         return {
             getAllRecipes: function (filters, success) {
