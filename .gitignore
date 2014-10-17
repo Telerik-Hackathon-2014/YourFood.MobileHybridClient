@@ -2,5 +2,7 @@
 # http://git-scm.com/docs/gitignore
 
 .idea
+YourFoodMobile/www/lib/
+YourFoodMobile/node_modules/
 platforms/
 plugins/
