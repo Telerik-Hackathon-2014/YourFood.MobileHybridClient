@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ProductsCtrl', function ($scope, $location, productsData, identity) {
+app.controller('AvailableProductsCtrl', function ($scope, $location, availableProductsData, identity) {
     if (!identity.isAuthenticated()) {
         $location.path('/login');
         return;
@@ -17,7 +17,7 @@ app.controller('ProductsCtrl', function ($scope, $location, productsData, identi
     $scope.numColumns.length = 4;
 
     function getProducts() {
-        productsData.getAllProducts(
+        availableProductsData.getAllProducts(
             $scope.filter,
             function (data) {
                 $scope.catalogProducts = data;

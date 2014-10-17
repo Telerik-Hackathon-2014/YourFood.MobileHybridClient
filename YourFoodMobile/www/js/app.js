@@ -48,7 +48,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             views: {
                 'products-tab': {
                     templateUrl: "www/templates/products/products.html",
-                    controller: 'ProductsCtrl'
+                    controller: 'AvailableProductsCtrl'
                 }
             }
         })
@@ -57,7 +57,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             views: {
                 'products-tab': {
                     templateUrl: "www/templates/products/product-details.html",
-                    controller: 'ProductDetailsCtrl'
+                    controller: 'AvailableProductDetailsCtrl'
                 }
             }
         })
@@ -113,7 +113,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/tab/products");
 
 })
-    .constant('baseUrl', 'http://yourfood-services.apphb.com/')
+    .constant('baseUrl', 'http://yourfood-services.azurewebsites.net/')
     .constant('author', 'YourFoodTm')
     .constant('copyright', 'YourFoodTm')
     .controller('HomeTabCtrl', function ($scope) {

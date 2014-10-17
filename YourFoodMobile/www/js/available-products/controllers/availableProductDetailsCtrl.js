@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ProductDetailsCtrl', function ($scope, $stateParams, productsData, identity) {
+app.controller('AvailableProductDetailsCtrl', function ($scope, $stateParams, availableProductsData, identity) {
     if (!identity.isAuthenticated()) {
         $location.path('/login');
         return;
@@ -13,7 +13,7 @@ app.controller('ProductDetailsCtrl', function ($scope, $stateParams, productsDat
 
     $scope.quantity = 1000;
 
-    productsData.getProductById($scope.productId,
+    availableProductsData.getProductById($scope.productId,
         function (data) {
             $scope.product = data;
         });

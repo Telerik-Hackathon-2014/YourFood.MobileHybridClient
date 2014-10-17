@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('productsData',
+app.factory('availableProductsData',
     function ($http, identity, authorization) {
         var productsApi = 'http://yourfood.herokuapp.com/api/catalog-products';
 

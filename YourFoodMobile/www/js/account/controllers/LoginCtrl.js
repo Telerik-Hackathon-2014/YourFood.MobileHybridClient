@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('LoginCtrl',
-    function ($scope, $location, identity, auth, productsData) {
+    function ($scope, $location, identity, auth) {
         $scope.identity = identity;
         $scope.loginActive = true;
 

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- ZA MARTO -->
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
@@ -46,10 +45,9 @@
     <script src="www/js/profile/controllers/profileCtrl.js"></script>
     <script src="www/js/profile/services/profileData.js"></script>
 
-    <script src="www/js/products/controllers/productsCtrl.js"></script>
-    <script src="www/js/products/controllers/productDetailsCtrl.js"></script>
-    <script src="www/js/products/services/productsData.js"></script>
-    <script src="www/js/products/filters/productsRowFilter.js"></script>
+    <script src="www/js/available-products/controllers/availableProductDetailsCtrl.js"></script>
+    <script src="www/js/available-products/controllers/availableProductsCtrl.js"></script>
+    <script src="www/js/available-products/services/availableProductsData.js"></script>
 
     <script src="www/js/shopping-lists/controllers/shoppingListCtrl.js"></script>
     <script src="www/js/shopping-lists/services/shoppingListData.js"></script>
@@ -99,7 +97,7 @@
                     <a class="item" menu-close nav-clear href="#/tab/products">Products</a>
                 </li>
 
-                <div ng-controller="ProductsCtrl">
+                <div ng-controller="AvailableProductsCtrl">
                     <li class="item item-divider">
                         Filter products by:
                     </li>
