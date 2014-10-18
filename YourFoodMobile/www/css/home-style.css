@@ -8,12 +8,9 @@
 }
 #home-view {
   text-align: center;
-  background-image: url("../../images/home-background.jpg");
+  background-image: url("/images/home-background.jpg");
 }
 #home-view #home-view-content #home-wrapper {
-  position: relative;
-  top: 40%;
-  transform: translateY(-40%);
   width: 350px;
   margin: auto;
   text-align: center;

@@ -8,12 +8,6 @@
   height: 100%;
   margin: 0 auto;
 }
-#login-form form,
-#register-form form {
-  position: relative;
-  top: 40%;
-  transform: translateY(-40%);
-}
 @media screen and (max-width: 400px) {
   #login-form,
   #register-form {
