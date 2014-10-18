@@ -27,12 +27,11 @@ app.factory('auth', function ($http, $q, $location, identity, authorization, bas
                     }
                 }).success(function (response) {
                     if (response["access_token"]) {
-                        console.log(response);
                         identity.setCurrentUser(response);
-                        deferred.resolve(true);
+                        deferred.resolve(response);
                     }
                     else {
-                        deferred.resolve(false);
+                        deferred.reject();
                     }
                 });
 

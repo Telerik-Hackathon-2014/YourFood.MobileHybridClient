@@ -19,7 +19,7 @@ app.factory('availableProductsData',
                     searchFilters += '&$filter=Product/CategoryId eq ' + filters.categoryId;
                 }
 
-                $http.get(productsApi + searchFilters, headers)
+                $http.get(productsApi + searchFilters, {headers: authorization.getAuthorizationHeader()})
                     .success(function (data) {
                         success(data);
                     })
@@ -48,7 +48,7 @@ app.factory('availableProductsData',
                 availableProduct.ExpirationDate.setDate(availableProduct.DateAdded.getDate() + catalogProduct.LifetimeInDays);
                 console.log(availableProduct);
 
-                $http.post(productsApi, availableProduct, headers)
+                $http.post(productsApi, availableProduct, {headers: authorization.getAuthorizationHeader()})
                     .success(function (data) {
                         success(data);
                     })
