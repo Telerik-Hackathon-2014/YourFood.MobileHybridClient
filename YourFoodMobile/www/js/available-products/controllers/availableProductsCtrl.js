@@ -6,6 +6,10 @@ app.controller('AvailableProductsCtrl', function ($scope,$rootScope, $location, 
         return;
     }
 
+    document.addEventListener('deviceready', function () {
+        console.log(navigator.camera);
+    });
+
     $rootScope.availableProductsFilters = {};
     $rootScope.tab = $rootScope.tab || {};
 
