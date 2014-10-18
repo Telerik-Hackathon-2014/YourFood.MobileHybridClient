@@ -4,7 +4,7 @@
     </li>
 
     <label class="item item-radio">
-        <input type="radio" ng-model="recipeFilter.name" value="true" name="recipe-filter-group">
+        <input type="radio" ng-model="recipeFilter.orderBy" value="name" name="recipe-filter-group">
         <div class="item-content">
             Name
         </div>
@@ -12,7 +12,7 @@
     </label>
 
     <label class="item item-radio">
-        <input type="radio" ng-model="recipeFilter.category" value="true" name="recipe-filter-group">
+        <input type="radio" ng-model="recipeFilter.orderBy" value="category" name="recipe-filter-group">
         <div class="item-content">
             Category
         </div>
@@ -23,25 +23,25 @@
             <input type="text" placeholder="Search by name..." ng-model="recipeFilter.filter"/>
         </label>
     </li>
+    <li>
+        <button class="button button-block button-positive" menu-close nav-clear ng-click="sort()">Filter recipes
+        </button>
+    </li>
     <li class="item item-divider">
         Choose category :
     </li>
-    <label class="item item-radio" ng-click="sort()">
+    <label class="item item-radio" ng-click="sort()" menu-close nav-clear>
         <input type="radio" ng-model="recipeFilter.CategoryId" value="" name="CategoryId">
         <div class="item-content">
             All
         </div>
         <i class="radio-icon ion-checkmark"></i>
     </label>
-    <label class="item item-radio" ng-click="sort()" ng-repeat="category in categories">
+    <label class="item item-radio" ng-click="sort()" ng-repeat="category in categories" menu-close nav-clear>
         <input type="radio" ng-model="recipeFilter.CategoryId" value="{{category.Id}}" name="CategoryId">
         <div class="item-content">
             {{category.Name}}
         </div>
         <i class="radio-icon ion-checkmark"></i>
     </label>
-    <li>
-        <button class="button button-block button-positive" ng-click="sort()">Filter recipes
-        </button>
-    </li>
 </div>

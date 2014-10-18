@@ -10,20 +10,18 @@ app.factory('catalogProductsData', function ($http, baseUrl, authorization, noti
 
             var searchFilters = '?$expand=Product&$expand=Product/Category';
 
-            if (filters.name == "true") {
+            if (filters.orderBy == "name") {
                 searchFilters += '&$orderby=Product/Name';
-            }
-            if (filters.category == "true") {
+            }else if (filters.orderBy == "category") {
                 searchFilters += '&$orderby=Product/Category/Name';
             }
-            if (filters.lifetime == "true") {
-                searchFilters += '&$select=LifetimeInDays';
-            }
+
             if (filters.categoryId) {
                 searchFilters += '&$filter=Product/CategoryId eq ' + filters.categoryId;
             }
-            if (filters.searchName) {
-                searchFilters += '&$filter=Product/Name eq ' + filters.searchName;
+
+            if (filters.filter) {
+                searchFilters += '&$filter=Product/Name eq ' + filters.filter;
             }
 
             $http.get(catalogProductsApi + searchFilters, headers)
