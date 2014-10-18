@@ -16,7 +16,7 @@ app.factory('availableProductsData',
                     searchFilters += '&$orderby=ExpirationDate'
                 }
                 if (filters.categoryId) {
-                    searchFilters += '&filter=Product/CategoryId eq ' + filters.categoryId;
+                    searchFilters += '&$filter=Product/CategoryId eq ' + filters.categoryId;
                 }
 
                 $http.get(productsApi + searchFilters, headers)

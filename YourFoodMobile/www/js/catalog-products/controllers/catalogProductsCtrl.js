@@ -12,12 +12,9 @@ app.controller('CatalogProductsCtrl', function ($scope, $rootScope, catalogProdu
         $rootScope.tab.isRecipesTab = false;
     }
 
-    showAvailableProductsTab();
-
     function getCatalogProducts(filters) {
         catalogProductsData.getAllCatalogProducts(filters,
             function (data) {
-                console.log()
                 $rootScope.catalogProducts = data.value;
             })
     }
@@ -35,6 +32,7 @@ app.controller('CatalogProductsCtrl', function ($scope, $rootScope, catalogProdu
     };
 
     getCatalogProducts($rootScope.catalogProductsFilters);
-    getCategories();
 
+    getCategories();
+    showAvailableProductsTab();
 });

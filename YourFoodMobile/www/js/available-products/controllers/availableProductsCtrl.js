@@ -6,6 +6,7 @@ app.controller('AvailableProductsCtrl', function ($scope,$rootScope, $location, 
         return;
     }
 
+    $rootScope.availableProductsFilters = {};
     $rootScope.tab = $rootScope.tab || {};
 
     $scope.identity = identity;
@@ -18,18 +19,11 @@ app.controller('AvailableProductsCtrl', function ($scope,$rootScope, $location, 
         $rootScope.tab.isRecipesTab = false;
     }
 
-    showAvailableProductsTab();
-
-    $scope.filter = {};
-    $scope.filter.page = $scope.filter.page || 1;
-    $scope.filter.sortType = $scope.filter.sortType || 'asc';
-
     $scope.numColumns = [];
     $scope.numColumns.length = 4;
 
-    function getProducts() {
-        availableProductsData.getAllAvailableProducts(
-            $scope.filter,
+    function getProducts(filters) {
+        availableProductsData.getAllAvailableProducts(filters,
             function (data) {
                 $rootScope.availableProducts = data.value;
             });
@@ -42,37 +36,11 @@ app.controller('AvailableProductsCtrl', function ($scope,$rootScope, $location, 
             })
     }
 
-    $scope.nextPage = function () {
-        if (!$scope.catalogProducts) {
-            return;
-        }
-        if ($scope.catalogProducts.length < 10) {
-            return;
-        }
-
-        $scope.filter.page++;
-        getProducts();
-    };
-
-    $scope.prevPage = function () {
-        if ($scope.filter.page > 1) {
-            $scope.filter.page--;
-            getProducts();
-        }
-    };
-
-    $scope.oneAtATime = true;
-
-    $scope.status = {
-        isFirstOpen: true,
-        isFirstDisabled: false,
-        open: true
-    };
-
     $scope.sort = function () {
-        getProducts();
+        getProducts($rootScope.availableProductsFilters);
     };
 
-    getProducts();
+    getProducts($rootScope.availableProductsFilters);
     getCategories();
+    showAvailableProductsTab();
 });
