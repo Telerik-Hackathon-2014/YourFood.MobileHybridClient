@@ -1,4 +1,4 @@
-<ion-view title="Products">
+<ion-view title="Fridge">
     <!--<ion-nav-buttons side="left">-->
     <!--<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>-->
     <!--</ion-nav-buttons>-->
@@ -14,12 +14,12 @@
         </div>
         <ion-list>
             <div class="responsive-sm">
-                <a class="item item-avatar " ng-repeat="product in catalogProducts"
-                   href="#/tab/products/{{product._id}}">
-                    <img src="{{product.image}}"/>
-                    <strong>{{product.name}}</strong>
+                <a class="item item-avatar " ng-repeat="product in availableProducts"
+                   href="#/catalog-product-details/{{product.ProductId}}">
+                    <img src="{{product.Product.ImageUrl}}" alt="no image found"/>
+                    <strong>{{product.Product.Name}}</strong>
                     <br/>
-                    <small>{{product.categoryName}}</small>
+                    <small>{{product.Product.Category.Name}}</small>
                 </a>
             </div>
         </ion-list>

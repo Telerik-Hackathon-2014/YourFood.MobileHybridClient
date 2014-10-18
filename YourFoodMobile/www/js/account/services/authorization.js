@@ -1,7 +1,7 @@
 'use strict';
 
 app.factory('authorization',['identity', function(identity) {
-    console.log(identity);
+
     return {
         getAuthorizationHeader: function() {
             return {

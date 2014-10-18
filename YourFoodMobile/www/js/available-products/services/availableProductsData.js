@@ -1,61 +1,55 @@
 'use strict';
 
 app.factory('availableProductsData',
-    function ($http, identity, authorization) {
-        var productsApi = 'http://yourfood.herokuapp.com/api/catalog-products';
+    function ($http, identity, authorization, baseUrl, notifier) {
+        var productsApi = baseUrl + '/api/AvailabilityProducts',
+            headers = {headers: authorization.getAuthorizationHeader()};
 
         return{
-            getAllProducts: function (filter, success) {
-                var url = productsApi + '?page=' + (filter.page - 1);
+            getAllAvailableProducts: function (filters, success) {
+                var searchFilters = '?$expand=Product&$expand=Product/Category';
 
-                if (filter.category) {
-                    url += '&orderByCategory=true';
+                if (filters.name) {
+                    searchFilters += '&$orderby=Product/Name';
+                }
+                if (filters.timeleft) {
+                    searchFilters += '&$orderby=Product/ExpirationDate'
+                }
+//                if (filters.frequency) {
+//                    searchFilters += '&$select=LifetimeInDays';
+//                }
+                if (filters.categoryId) {
+                    searchFilters += '&filter=Product/CategoryId eq ' + filters.categoryId;
                 }
 
-                if (filter.lifetime) {
-                    url += '&orderByLifeTime=true';
-                }
-
-                if (filter.name) {
-                    url += '&orderByName=true';
-                }
-
-                url += '&sortType=' + filter.sortType;
-
-                $http.get(url)
+                $http.get(productsApi + searchFilters, headers)
                     .success(function (data) {
                         success(data);
                     })
                     .error(function (err) {
-                        console.log('Could not get catalog products');
+                        notifier.error('Could not get catalog products' + err);
                     });
             },
             getProductById: function (id, success) {
-                $http.get(productsApi + '/' + id)
+                var addon = '(' + id + ')/Product?$expand=Category';
+
+                $http.get(productsApi + addon, headers)
                     .success(function (data) {
                         success(data);
                     })
                     .error(function (err) {
-                        console.log('Could not get catalog product by id');
+                        notifier.error('Could not get catalog product by id');
                     })
+            },
+            addToAvailableProducts: function (product, success) {
+
+                $http.post(productsApi, product, headers)
+                    .success(function (data) {
+                        success(data);
+                    })
+                    .error(function (err) {
+                        notifier.error('Could not add product to fridge: ' + err);
+                    });
             }
-//            addProductToFridge: function(id, product, success) {
-//                $http.post('api/products/add-to-fridge/' + id, product)
-//                    .success(function (data) {
-//                        success(data);
-//                    })
-//                    .error(function (err) {
-//                        console.log('Could not add product to fridge: ' + err);
-//                    });
-//            },
-//            getAvailableProducts: function(id, success) {
-//                $http.get(productsApi + '/' + id)
-//                    .success(function (availableProducts) {
-//                        success(availableProducts);
-//                    })
-//                    .error(function (err) {
-//                        console.log('Could not get available products: ' + err);
-//                    });
-//            }
         }
     });

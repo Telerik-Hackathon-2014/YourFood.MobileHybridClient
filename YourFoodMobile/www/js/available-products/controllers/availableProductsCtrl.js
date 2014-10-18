@@ -17,10 +17,11 @@ app.controller('AvailableProductsCtrl', function ($scope, $location, availablePr
     $scope.numColumns.length = 4;
 
     function getProducts() {
-        availableProductsData.getAllProducts(
+        availableProductsData.getAllAvailableProducts(
             $scope.filter,
             function (data) {
-                $scope.catalogProducts = data;
+                console.log(data);
+                $scope.availableProducts = data.value;
             });
     }
 

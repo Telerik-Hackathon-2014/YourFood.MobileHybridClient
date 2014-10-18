@@ -1,5 +1,15 @@
 <ion-view title="Catalog products">
     <ion-content class="has-header">
-        <h1>{{data}}</h1>
+        <ion-list>
+            <div class="responsive-sm">
+                <a class="item item-avatar " ng-repeat="item in catalogProducts"
+                   href="#/catalog-product-details/{{item.Product.Id}}">
+                    <img src="{{item.Product.ImageUrl}}" alt="no image found"/>
+                    <strong>{{item.Product.Name}}</strong>
+                    <br/>
+                    <small>{{item.Product.Category.Name}}</small>
+                </a>
+            </div>
+        </ion-list>
     </ion-content>
 </ion-view>

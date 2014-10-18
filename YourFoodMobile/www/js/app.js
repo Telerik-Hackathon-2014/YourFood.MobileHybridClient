@@ -39,24 +39,26 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'CatalogProductsCtrl'
         })
         .state('catalog-product-details', {
-            url: "/catalog-products/:id",
+            url: "/catalog-product-details/:id",
             templateUrl: "www/templates/catalog-products/catalog-product-details.html",
             controller: 'CatalogProductDetailsCtrl'
         })
-        .state('tabs.products', {
-            url: "/products",
+
+        // ----- Tabs routes and views settings
+        .state('tabs.available-products', {
+            url: "/available-products",
             views: {
-                'products-tab': {
-                    templateUrl: "www/templates/products/products.html",
+                'available-products-tab': {
+                    templateUrl: "www/templates/available-products/available-products.html",
                     controller: 'AvailableProductsCtrl'
                 }
             }
         })
-        .state('tabs.product', {
-            url: "/products/:id",
+        .state('tabs.available-product-details', {
+            url: "/available-product-details/:id",
             views: {
-                'products-tab': {
-                    templateUrl: "www/templates/products/product-details.html",
+                'available-products-tab': {
+                    templateUrl: "www/templates/available-products/available-product-details.html",
                     controller: 'AvailableProductDetailsCtrl'
                 }
             }
@@ -88,6 +90,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('tabs.profile', {
+            url: "/profile",
+            views: {
+                'profile-tab': {
+                    templateUrl: "www/templates/profile/profile.html",
+                    controller: 'ProfileCtrl'
+                }
+            }
+        })
+
         // ---- Admin part
         .state('create-product', {
             url: "/create-product",
@@ -108,13 +120,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/create-recipes-category",
             templateUrl: "www/templates/admin/recipes/create-recipes-category.html",
             controller: 'AdminCreateRecipesCategoryCtrl'
-        })
+        });
 
-    $urlRouterProvider.otherwise("/tab/products");
+    $urlRouterProvider.otherwise("/tab/available-products");
 
 })
-    .constant('baseUrl', 'http://yourfood-services.azurewebsites.net/')
-    .constant('author', 'YourFoodTm')
-    .constant('copyright', 'YourFoodTm')
-    .controller('HomeTabCtrl', function ($scope) {
-    });
+.constant('baseUrl', 'http://yourfood-services.azurewebsites.net/')
+.constant('author', 'YourFoodTm')
+.constant('copyright', 'YourFoodTm');

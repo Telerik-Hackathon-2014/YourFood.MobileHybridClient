@@ -1,5 +1,37 @@
-<ion-view title="Catalog product">
+<ion-view title="{{catalogProduct.Name}}">
     <ion-content class="has-header">
-        <h1>{{data}}</h1>
+        <ion-list>
+            <div class="row">
+                <div class="col col-33 img-container">
+                    <img src="{{catalogProduct.ImageUrl}}" alt="no image found">
+                </div>
+                <div class="col">
+                    <h4>{{catalogProduct.Name}}</h4>
+                    <h5>{{catalogProduct.Category.Name}}</h5>
+                </div>
+            </div>
+            <div class="item item-body">
+                <h2>Average freshness : <strong>{{catalogProduct.LifetimeInDays}}</strong> days</h2>
+                <h2>Unittype : {{catalogProduct.UnitType}}</h2>
+                <br/>
+                <div class="range range-positive">
+                    <i class="icon ion-ios7-download-outline"></i>
+                    <input type="range" name="volume" min="0" max="100" value="33">
+                    <i class="icon ion-ios7-upload-outline"></i>
+                </div>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-social-buffer"></i>
+                    To fridge
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-social-buffer-outline"></i>
+                    To list
+                </a>
+            </div>
+        </ion-list>
     </ion-content>
 </ion-view>
+
