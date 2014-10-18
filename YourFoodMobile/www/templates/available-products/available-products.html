@@ -6,11 +6,6 @@
 
     <ion-content class="has-header">
         <ion-list>
-            <h1>{{error}}</h1>
-            <label class="item item-avatar">
-                <img src="{{imageURI}}" alt=""/>
-            </label>
-
             <div class="responsive-sm">
                 <a class="item item-avatar " ng-repeat="product in availableProducts"
                    href="#/catalog-product-details/{{product.ProductId}}">

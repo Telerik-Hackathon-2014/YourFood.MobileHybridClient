@@ -1,6 +1,7 @@
 <ion-view title="Login">
     <ion-content class="has-header">
-        <div class="list list-inset">
+       
+        <div class="list list-inset" id="login-form">
             <form name="loginForm" ng-hide="identity.isAuthenticated()">
                 <label class="item item-input">
                     <input type="email" placeholder="Email" value="op@op.op" ng-model="user.Username"/>
@@ -9,8 +10,9 @@
                     <input type="password" placeholder="Password" value="parola" ng-model="user.Password"/>
                 </label>
 
-                <button class="button button-block button-positive" ng-click="login(user, loginForm)">Login</button>
+                <button class="button button-block button-balanced" ng-click="login(user, loginForm)">Login</button>
             </form>
         </div>
+        
     </ion-content>
 </ion-view>
