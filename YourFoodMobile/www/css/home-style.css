@@ -8,7 +8,7 @@
 }
 #home-view {
   text-align: center;
-  background-color: green;
+  background-image: url("/images/home-background.jpg");
 }
 #home-view #home-view-content #home-wrapper {
   width: 350px;
