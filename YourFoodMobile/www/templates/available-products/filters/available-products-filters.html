@@ -34,7 +34,14 @@
     <li class="item item-divider">
         Choose category :
     </li>
-    <label class="item item-radio" ng-repeat="category in categories">
+    <label class="item item-radio" menu-close nav-clear ng-click="sort()">
+        <input type="radio" ng-model="availableProductsFilters.categoryId" value="" name="categoryId">
+        <div class="item-content">
+            All
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+    </label>
+    <label class="item item-radio" ng-click="sort()" menu-close nav-clear ng-repeat="category in categories">
         <input type="radio" ng-model="availableProductsFilters.categoryId" value="{{category.Id}}" name="categoryId">
         <div class="item-content">
             {{category.Name}}
