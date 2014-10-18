@@ -4,11 +4,11 @@
     <!--</ion-nav-buttons>-->
     <ion-content class="has-header">
         <ion-list>
-            <a class="item item-avatar" ng-repeat="recipe in recipes" href="#/tab/recipes/{{recipe._id}}">
-                <img src="{{recipe.image}}"/>
-                <strong>{{recipe.name}}</strong>
+            <a class="item item-avatar" ng-repeat="recipe in recipes" href="#/tab/recipes/{{recipe.Id}}">
+                <img src="{{recipe.ImageUrl}}"/>
+                <strong>{{recipe.Name}}</strong>
                 <br/>
-                <small>{{recipe.categoryName}}</small>
+                <small>{{recipe.Category.Name}}</small>
             </a>
         </ion-list>
     </ion-content>

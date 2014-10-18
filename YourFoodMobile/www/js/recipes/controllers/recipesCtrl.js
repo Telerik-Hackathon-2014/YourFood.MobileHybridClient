@@ -1,66 +1,35 @@
 'use strict';
 
 app.controller('RecipesCtrl',
-    function ($scope, $location, recipesData, identity) {
+    function ($scope, $location, recipesData, identity, recipesCategoriesData) {
         if (!identity.isAuthenticated()) {
             $location.path('/login');
             return;
         }
 
-        $scope.isLogged = identity.isAuthenticated();
+        $scope.recipeFilter = {};
 
-        // Filter
-        $scope.filter = {};
-        $scope.filter.page = $scope.filter.page || 1;
-        $scope.filter.sortType = $scope.filter.sortType || 'asc';
+        $scope.isLogged = identity.isAuthenticated();
 
         function getRecipes() {
             recipesData.getAllRecipes(
-                $scope.filter,
+                $scope.recipeFilter,
                 function (data) {
-                    $scope.recipes = data;
+                    $scope.recipes = data.value;
                 });
         }
 
-        $scope.nextPage = function () {
-            if ($scope.recipes.length < 10 || $scope.recipes == undefined) {
-                return;
-            }
-
-            $scope.filter.page++;
-            getRecipes();
-        };
-
-        $scope.prevPage = function () {
-            if ($scope.filter.page > 1) {
-                $scope.filter.page--;
-                getRecipes();
-            }
-        };
-
-        $scope.oneAtATime = true;
-
-        $scope.status = {
-            isFirstOpen: true,
-            isFirstDisabled: false,
-            open: true
-        };
+        function getCategories() {
+            recipesCategoriesData.getAllRecipeCategories(
+                function (data) {
+                    $scope.categories = data;
+                })
+        }
 
         $scope.sort = function () {
             getRecipes();
         };
 
-//        // Carousel
-//        $scope.interval = 2500;
-//        $scope.recipesCarousel = [];
-//
-//        recipesData.getAllRecipes(
-//            $scope.filter,
-//            function (data) {
-//                var index = Math.floor(Math.random() * (data.length - 4));
-//                console.log(index);
-//                $scope.recipesCarousel = data.slice(index, index + 3);
-//            });
-
         getRecipes();
+        getCategories();
     });

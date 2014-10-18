@@ -1,42 +1,40 @@
 'use strict';
 
 app.factory('recipesData',
-    function ($http, baseUrl) {
-        var recipesApi = baseUrl + 'recipes';
+    function ($http, baseUrl, notifier) {
+        var recipesApi = baseUrl + 'api/Recipes';
 
         return {
             getAllRecipes: function (filters, success) {
-                var url = recipesApi + '?page=' + (filters.page -1);
+                var searchFilters = '?$expand=Category';
 
-                if (filters.category) {
-                    url += '&orderByCategory=true';
-                }
-
-                if (filters.description) {
-                    url += '&orderByDescription=true';
+                if (filters.categoryName) {
+                    searchFilters += '&$orderby=Category/Name';
                 }
 
                 if (filters.name) {
-                    url += '&orderByName=true';
+                    searchFilters += '&$orderby=Name';
                 }
 
-                url += '&sortType=' + filters.sortType;
 
-                $http.get(url)
+
+                $http.get(recipesApi + searchFilters)
                     .success(function (data) {
                         success(data);
                     })
                     .error(function (err) {
-                        console.log('Could not get recipes')
-                    })
+                        notifier.error('Could not get recipes');
+                    });
             },
             getRecipeById: function (id, success) {
-                $http.get(recipesApi + '/' + id)
+                var addon = '(' + id + ')?$expand=Category';
+
+                $http.get(recipesApi + addon)
                     .success(function (data) {
                         success(data);
                     })
                     .error(function (err) {
-                        console.log('Could not get the recipe you wanted :(');
+                        notifier.error('Could not get catalog product by id');
                     })
             }
         }
