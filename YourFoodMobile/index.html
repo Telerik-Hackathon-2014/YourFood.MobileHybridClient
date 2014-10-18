@@ -37,7 +37,7 @@
 
     <script src="www/js/recipes/controllers/recipesCtrl.js"></script>
     <script src="www/js/recipes/controllers/recipeDetailsCtrl.js"></script>
-   <script src="www/js/recipes/services/recipesData.js"></script>
+    <script src="www/js/recipes/services/recipesData.js"></script>
 
 
     <script src="www/js/catalog-products/controllers/catalogProductsCtrl.js"></script>
@@ -49,13 +49,16 @@
 
     <script src="www/js/available-products/controllers/availableProductDetailsCtrl.js"></script>
     <script src="www/js/available-products/controllers/availableProductsCtrl.js"></script>
-   <script src="www/js/available-products/services/availableProductsData.js"></script>
+    <script src="www/js/available-products/services/availableProductsData.js"></script>
 
     <script src="www/js/shopping-lists/controllers/shoppingListCtrl.js"></script>
     <script src="www/js/shopping-lists/services/shoppingListData.js"></script>
 
     <script src="www/js/categories/products/productsCategoriesData.js"></script>
     <script src="www/js/categories/recipes/recipesCategoriesData.js"></script>
+
+    <script src="www/js/camera-control/controllers/cameraCtrl.js"></script>
+    <script src="www/js/camera-control/services/cameraData.js"></script>
 
     <script src="www/js/notifier/notifier.js"></script>
 
@@ -78,17 +81,21 @@
 <ion-side-menus ng-controller="MainCtrl">
 
     <ion-side-menu-content drag-content="{{isLogged()}}" ng-controller="NavCtrl">
-        <ion-nav-bar class="bar-positive"  ng-show="isLogged()">
+        <ion-nav-bar class="bar-positive" ng-show="isLogged()">
             <ion-nav-back-button class="button-icon ion-arrow-left-c">
             </ion-nav-back-button>
         </ion-nav-bar>
         <ion-nav-buttons side="left" ng-show="isLogged()">
-            <button  ng-show="isLogged()" class="button button-icon button-clear ion-navicon" ng-click="showMenu()">
+            <button ng-show="isLogged()" class="button button-icon button-clear ion-navicon" ng-click="showMenu()">
             </button>
         </ion-nav-buttons>
 
         <ion-nav-buttons side="right" ng-show="isLogged()">
-            <button  ng-show="isLogged()" class="button button-icon button-clear ion-ios7-gear" ng-click="showRightMenu()">
+            <button ng-show="isLogged()" class="button button-icon button-clear ion-ios7-camera"
+                    ng-click="takePictureForShoppingList()">
+            </button>
+            <button ng-show="isLogged()" class="button button-icon button-clear ion-ios7-gear"
+                    ng-click="showRightMenu()">
             </button>
         </ion-nav-buttons>
         <ion-nav-view animation="slide-left-right"></ion-nav-view>
@@ -104,9 +111,12 @@
                     <a class="item" menu-close nav-clear href="#/tab/products">Products</a>
                 </li>
 
-                <div ng-show="tab.isAvailabeProductsTab" ng-include src="'www/templates/available-products/filters/available-products-filters.html'"></div>
-                <div ng-show="tab.isCatalogProductsTab" ng-include src="'www/templates/catalog-products/filters/catalog-products-filters.html'"></div>
-                <div ng-show="tab.isRecipesTab" ng-include src="'www/templates/recipes/filters/recipes-filters.html'"></div>
+                <div ng-show="tab.isAvailabeProductsTab" ng-include
+                     src="'www/templates/available-products/filters/available-products-filters.html'"></div>
+                <div ng-show="tab.isCatalogProductsTab" ng-include
+                     src="'www/templates/catalog-products/filters/catalog-products-filters.html'"></div>
+                <div ng-show="tab.isRecipesTab" ng-include
+                     src="'www/templates/recipes/filters/recipes-filters.html'"></div>
             </ul>
         </ion-content>
     </ion-side-menu>

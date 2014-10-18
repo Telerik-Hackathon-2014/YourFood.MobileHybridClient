@@ -6,16 +6,14 @@ app.controller('LoginCtrl',
         $scope.loginActive = true;
 
         $scope.isAdmin = function () {
-            // TODO: Uncomment when roles are active
             return identity.isAdmin();
-//            return true;
         };
 
         $scope.login = function (user, loginForm) {
             if (loginForm.$valid) {
                 auth.login(user).then(function (success) {
                     if (success) {
-                        $location.path('/products');
+                        $location.path('/available-products');
                     }
                     else {
                         $scope.error = 'Username/Password combination is not valid!';
