@@ -5,6 +5,7 @@ app.controller('AvailableProductsCtrl', function ($scope,$rootScope, $location, 
         $location.path('/home');
         return;
     }
+
     $rootScope.availableProductsFilters = {};
     $rootScope.tab = $rootScope.tab || {};
 

@@ -1,8 +1,6 @@
 'use strict';
 
-app.controller('MainCtrl', function ($scope, identity, cameraData) {
-
-
+app.controller('MainCtrl', function ($scope, identity, cameraData, notifier) {
 
     $scope.takePictureForShoppingList = function () {
         document.addEventListener('deviceready', function () {
@@ -11,15 +9,15 @@ app.controller('MainCtrl', function ($scope, identity, cameraData) {
                 targetHeight: 400,
                 targetWidth: 400
             };
-            
+
             navigator.camera.getPicture(function (imageData) {
                 var image = "data:image/jpeg;base64," + imageData;
 
                 cameraData.postImage(image, function (data) {
-                    alert(data);
+                    notifier.success(data);
                 });
             }, function (err) {
-                $scope.error = 'CAMERA NOT WORKING';
+                notifier.error = 'CAMERA NOT WORKING';
             }, picConfig);
         });
     };
