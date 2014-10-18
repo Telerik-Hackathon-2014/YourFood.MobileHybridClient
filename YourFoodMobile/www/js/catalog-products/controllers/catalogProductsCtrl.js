@@ -4,6 +4,15 @@ app.controller('CatalogProductsCtrl', function ($scope, $rootScope, catalogProdu
 
     $rootScope.catalogProductsFilters = {};
     $rootScope.data = 'dfjlghdfjkghdfj';
+    $rootScope.tab = $rootScope.tab || {};
+
+    function showAvailableProductsTab() {
+        $rootScope.tab.isAvailabeProductsTab = false;
+        $rootScope.tab.isCatalogProductsTab = true;
+        $rootScope.tab.isRecipesTab = false;
+    }
+
+    showAvailableProductsTab();
 
     function getCatalogProducts(filters) {
         catalogProductsData.getAllCatalogProducts(filters,

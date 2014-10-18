@@ -36,7 +36,8 @@
 
     <script src="www/js/recipes/controllers/recipesCtrl.js"></script>
     <script src="www/js/recipes/controllers/recipeDetailsCtrl.js"></script>
-    <script src="www/js/recipes/services/recipesData.js"></script>
+   <script src="www/js/recipes/services/recipesData.js"></script>
+
 
     <script src="www/js/catalog-products/controllers/catalogProductsCtrl.js"></script>
     <script src="www/js/catalog-products/controllers/catalogProductDetailsCtrl.js"></script>
@@ -47,7 +48,7 @@
 
     <script src="www/js/available-products/controllers/availableProductDetailsCtrl.js"></script>
     <script src="www/js/available-products/controllers/availableProductsCtrl.js"></script>
-    <script src="www/js/available-products/services/availableProductsData.js"></script>
+   <script src="www/js/available-products/services/availableProductsData.js"></script>
 
     <script src="www/js/shopping-lists/controllers/shoppingListCtrl.js"></script>
     <script src="www/js/shopping-lists/services/shoppingListData.js"></script>
@@ -102,9 +103,9 @@
                     <a class="item" menu-close nav-clear href="#/tab/products">Products</a>
                 </li>
 
-                <div ng-include src="'www/templates/available-products/filters/available-products-filters.html'"></div>
-                <div ng-include src="'www/templates/catalog-products/filters/catalog-products-filters.html'"></div>
-                <div ng-include src="'www/templates/recipes/filters/recipes-filters.html'"></div>
+                <div ng-show="tab.isAvailabeProductsTab" ng-include src="'www/templates/available-products/filters/available-products-filters.html'"></div>
+                <div ng-show="tab.isCatalogProductsTab" ng-include src="'www/templates/catalog-products/filters/catalog-products-filters.html'"></div>
+                <div ng-show="tab.isRecipesTab" ng-include src="'www/templates/recipes/filters/recipes-filters.html'"></div>
             </ul>
         </ion-content>
     </ion-side-menu>

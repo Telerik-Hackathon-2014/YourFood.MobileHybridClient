@@ -6,10 +6,18 @@ app.controller('RecipesCtrl',
             $location.path('/login');
             return;
         }
+        $rootScope.tab = $rootScope.tab || {};
+        $scope.isLogged = identity.isAuthenticated();
+
+        function showRecipesTab() {
+            $rootScope.tab.isAvailabeProductsTab = false;
+            $rootScope.tab.isCatalogProductsTab = false;
+            $rootScope.tab.isRecipesTab = true;
+
+        }
 
         $rootScope.recipeFilter = {};
 
-        $scope.isLogged = identity.isAuthenticated();
 
         function getRecipes() {
             recipesData.getAllRecipes(
@@ -37,4 +45,5 @@ app.controller('RecipesCtrl',
 
         getRecipes();
         getCategories();
+        showRecipesTab();
     });

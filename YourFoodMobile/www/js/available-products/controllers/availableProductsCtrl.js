@@ -1,13 +1,24 @@
 'use strict';
 
-app.controller('AvailableProductsCtrl', function ($scope, $location, availableProductsData, identity, productsCategoriesData) {
+app.controller('AvailableProductsCtrl', function ($scope,$rootScope, $location, availableProductsData, identity, productsCategoriesData) {
     if (!identity.isAuthenticated()) {
         $location.path('/home');
         return;
     }
 
+    $rootScope.tab = $rootScope.tab || {};
+
     $scope.identity = identity;
     $scope.isLogged = identity.isAuthenticated();
+
+
+    function showAvailableProductsTab () {
+        $rootScope.tab.isAvailabeProductsTab = true;
+        $rootScope.tab.isCatalogProductsTab = false;
+        $rootScope.tab.isRecipesTab = false;
+    }
+
+    showAvailableProductsTab();
 
     $scope.filter = {};
     $scope.filter.page = $scope.filter.page || 1;
@@ -20,8 +31,7 @@ app.controller('AvailableProductsCtrl', function ($scope, $location, availablePr
         availableProductsData.getAllAvailableProducts(
             $scope.filter,
             function (data) {
-                console.log($scope.filter);
-                $scope.availableProducts = data.value;
+                $rootScope.availableProducts = data.value;
             });
     }
 
