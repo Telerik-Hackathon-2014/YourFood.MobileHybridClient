@@ -14,9 +14,9 @@ app.factory('recipesData',
                     searchFilters += '&$orderby=Category/Name';
                 }
 
-                if (filters.filter) {
-                    searchFilters += '&$filter=Name eq \'' + filters.filter + '\'';
-                }
+//                if (filters.filter) {
+//                    searchFilters += '&$filter=Name eq \'' + filters.filter + '\'';
+//                }
 
                 if (filters.CategoryId) {
                     searchFilters += '&$filter=CategoryId eq ' + filters.CategoryId;
