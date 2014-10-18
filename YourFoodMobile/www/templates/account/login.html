@@ -3,10 +3,10 @@
         <div class="list list-inset">
             <form name="loginForm" ng-hide="identity.isAuthenticated()">
                 <label class="item item-input">
-                    <input type="email" placeholder="Email" ng-model="user.Username"/>
+                    <input type="email" placeholder="Email" value="op@op.op" ng-model="user.Username"/>
                 </label>
                 <label class="item item-input">
-                    <input type="password" placeholder="Password" ng-model="user.Password"/>
+                    <input type="password" placeholder="Password" value="parola" ng-model="user.Password"/>
                 </label>
 
                 <button class="button button-block button-positive" ng-click="login(user, loginForm)">Login</button>

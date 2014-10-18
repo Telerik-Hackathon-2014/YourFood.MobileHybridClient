@@ -3,16 +3,16 @@
         <ion-list>
             <div class="row">
                 <div class="col col-33 img-container">
-                    <img src="{{catalogProduct.ImageUrl}}" alt="no image found">
+                    <img src="{{catalogProduct.Product.ImageUrl}}" alt="no image found">
                 </div>
                 <div class="col">
-                    <h4>{{catalogProduct.Name}}</h4>
-                    <h5>{{catalogProduct.Category.Name}}</h5>
+                    <h4>{{catalogProduct.Product.Name}}</h4>
+                    <h5>{{catalogProduct.Product.Category.Name}}</h5>
                 </div>
             </div>
             <div class="item item-body">
                 <h2>Average freshness : <strong>{{catalogProduct.LifetimeInDays}}</strong> days</h2>
-                <h2>Unittype : {{catalogProduct.UnitType}}</h2>
+                <h2>Unittype : {{catalogProduct.Product.UnitType}}</h2>
                 <br/>
                 <div class="range range-positive">
                     <i class="icon ion-ios7-download-outline"></i>
@@ -22,7 +22,7 @@
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
-                <a class="tab-item" href="#">
+                <a class="tab-item" ng-click="addToFridge()">
                     <i class="icon ion-social-buffer"></i>
                     To fridge
                 </a>

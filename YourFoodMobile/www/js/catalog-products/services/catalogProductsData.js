@@ -1,7 +1,7 @@
 'use strict';
 
 app.factory('catalogProductsData', function ($http, baseUrl, authorization, notifier) {
-    var catalogProductsApi = baseUrl + '/api/CatalogProducts',
+    var catalogProductsApi = baseUrl + 'api/CatalogProducts',
         headers = {headers: authorization.getAuthorizationHeader()};
 
     return {
@@ -10,17 +10,20 @@ app.factory('catalogProductsData', function ($http, baseUrl, authorization, noti
 
             var searchFilters = '?$expand=Product&$expand=Product/Category';
 
-            if (filters.name) {
+            if (filters.name == "true") {
                 searchFilters += '&$orderby=Product/Name';
             }
-            if (filters.lifetime) {
+            if (filters.category == "true") {
+                searchFilters += '&$orderby=Product/Category/Name';
+            }
+            if (filters.lifetime == "true") {
                 searchFilters += '&$select=LifetimeInDays';
             }
             if (filters.categoryId) {
-                searchFilters += '&filter=Product/CategoryId eq ' + filters.categoryId;
+                searchFilters += '&$filter=Product/CategoryId eq ' + filters.categoryId;
             }
             if (filters.searchName) {
-                searchFilters += '&filter=Product/Name eq ' + filters.searchName;
+                searchFilters += '&$filter=Product/Name eq ' + filters.searchName;
             }
 
             $http.get(catalogProductsApi + searchFilters, headers)
@@ -32,7 +35,7 @@ app.factory('catalogProductsData', function ($http, baseUrl, authorization, noti
                 })
         },
         getCatalogProductById: function (id, success) {
-            var queryAddon = '(' + id + ')/Product?$expand=Category';
+            var queryAddon = '(' + id + ')?$expand=Product/Category';
 
             $http.get(catalogProductsApi + queryAddon, headers)
                 .success(function (data) {

@@ -2,7 +2,7 @@
 
 app.factory('availableProductsData',
     function ($http, identity, authorization, baseUrl, notifier) {
-        var productsApi = baseUrl + '/api/AvailabilityProducts',
+        var productsApi = baseUrl + 'api/AvailabilityProducts',
             headers = {headers: authorization.getAuthorizationHeader()};
 
         return{
@@ -38,9 +38,17 @@ app.factory('availableProductsData',
                         notifier.error('Could not get catalog product by id');
                     })
             },
-            addToAvailableProducts: function (product, success) {
+            addCatalogProductToAvailableProducts: function (catalogProduct, success) {
 
-                $http.post(productsApi, product, headers)
+//                Id, ExpirationData(DateAdded + CatalogProduct.LifeTime), ProductId= CatalogProduct.Id
+                var availableProduct = {};
+                availableProduct.ProductId = catalogProduct.Id;
+                availableProduct.DateAdded = new Date();
+                availableProduct.ExpirationDate = new Date();
+                availableProduct.ExpirationDate.setDate(availableProduct.DateAdded.getDate() + catalogProduct.LifetimeInDays);
+                console.log(availableProduct);
+
+                $http.post(productsApi, availableProduct, headers)
                     .success(function (data) {
                         success(data);
                     })

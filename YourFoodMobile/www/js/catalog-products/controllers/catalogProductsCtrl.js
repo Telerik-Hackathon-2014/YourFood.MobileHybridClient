@@ -1,13 +1,15 @@
 'use strict';
 
-app.controller('CatalogProductsCtrl', function ($scope, catalogProductsData, productsCategoriesData, notifier) {
+app.controller('CatalogProductsCtrl', function ($scope, $rootScope, catalogProductsData, productsCategoriesData, notifier) {
 
-    $scope.filters = {};
+    $rootScope.catalogProductsFilters = {};
+    $rootScope.data = 'dfjlghdfjkghdfj';
 
     function getCatalogProducts(filters) {
         catalogProductsData.getAllCatalogProducts(filters,
             function (data) {
-                $scope.catalogProducts = data.value;
+                console.log()
+                $rootScope.catalogProducts = data.value;
             })
     }
 
@@ -20,10 +22,10 @@ app.controller('CatalogProductsCtrl', function ($scope, catalogProductsData, pro
     }
 
     $scope.sort = function () {
-        getCatalogProducts($scope.filters);
+        getCatalogProducts($rootScope.catalogProductsFilters);
     };
 
-    getCatalogProducts($scope.filters);
+    getCatalogProducts($rootScope.catalogProductsFilters);
     getCategories();
 
 });
