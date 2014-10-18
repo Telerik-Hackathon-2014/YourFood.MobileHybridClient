@@ -10,6 +10,11 @@
                     <h5>{{recipe.Category.Name }}</h5>
                 </div>
             </div>
+
+            <div class="item item-body">
+                <span>Ingredients:</span>
+                <h5 ng-repeat="product in recipe.Ingredients">{{product.Product.Name}}</h5>
+            </div>
             <div class="item item-body">
                 <p>{{recipe.Description}}</p>
 
@@ -17,7 +22,6 @@
                     <a href="#" class="subdued">1 Like</a>
                 </p>
             </div>
-
             <div class="item tabs tabs-secondary tabs-icon-left">
                 <a class="tab-item" href="#">
                     <i class="icon ion-social-buffer"></i>

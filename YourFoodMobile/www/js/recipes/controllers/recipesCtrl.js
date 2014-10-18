@@ -1,33 +1,38 @@
 'use strict';
 
 app.controller('RecipesCtrl',
-    function ($scope, $location, recipesData, identity, recipesCategoriesData) {
+    function ($scope, $rootScope, $location, recipesData, identity, recipesCategoriesData) {
         if (!identity.isAuthenticated()) {
             $location.path('/login');
             return;
         }
 
-        $scope.recipeFilter = {};
+        $rootScope.recipeFilter = {};
 
         $scope.isLogged = identity.isAuthenticated();
 
         function getRecipes() {
             recipesData.getAllRecipes(
-                $scope.recipeFilter,
+                $rootScope.recipeFilter,
                 function (data) {
-                    $scope.recipes = data.value;
+                    $rootScope.recipes = data.value;
                 });
         }
 
         function getCategories() {
             recipesCategoriesData.getAllRecipeCategories(
                 function (data) {
-                    $scope.categories = data;
+                    $rootScope.categories = data;
+
                 })
         }
 
         $scope.sort = function () {
-            getRecipes();
+            recipesData.getAllRecipes(
+                $rootScope.recipeFilter,
+                function (data) {
+                    $rootScope.recipes = data.value;
+                });
         };
 
         getRecipes();

@@ -16,7 +16,13 @@ app.factory('recipesData',
                     searchFilters += '&$orderby=Name';
                 }
 
+                if (filters.filter) {
+                    searchFilters += '&$filter=Name eq \'' + filters.filter + '\'';
+                }
 
+                if (filters.CategoryId) {
+                    searchFilters += '&$filter=CategoryId eq ' + filters.CategoryId;
+                }
 
                 $http.get(recipesApi + searchFilters)
                     .success(function (data) {
@@ -27,7 +33,7 @@ app.factory('recipesData',
                     });
             },
             getRecipeById: function (id, success) {
-                var addon = '(' + id + ')?$expand=Category';
+                var addon = '(' + id + ')?$expand=Category&$expand=Ingredients/Product';
 
                 $http.get(recipesApi + addon)
                     .success(function (data) {
