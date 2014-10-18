@@ -8,7 +8,7 @@ app.factory('productsCategoriesData', function ($http, baseUrl, authorization, n
         getAllProductCategories: function (success) {
             $http.get(productsCategoriesApi, {headers: headers})
                 .success(function (data) {
-                    success(data);
+                    success(data.value);
                 })
                 .error(function (err) {
                     notifier.error("Didn't get categories! :" + err);

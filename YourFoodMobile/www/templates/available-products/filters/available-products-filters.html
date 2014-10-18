@@ -1,40 +1,48 @@
 <div ng-controller="AvailableProductsCtrl">
     <li class="item item-divider">
-        Filter products by:
+        Sort products by:
     </li>
-    <li class="item item-toggle">
-        Name
-        <label class="toggle toggle-balanced">
-            <input type="checkbox"
-                   ng-model="filter.orderby"
-                   ng-true-value="Name"
-                   ng-false-value="">
 
-            <div class="track">
-                <div class="handle"></div>
-            </div>
-        </label>
-    </li>
-    <li class="item item-toggle">
-        Category
-        <label class="toggle toggle-balanced">
-            <input type="checkbox"
-                   ng-model="filter.expand"
-                   ng-true-value="{{category.Id}}"
-                   ng-false-value="">
+    <label class="item item-radio">
+        <input type="radio" ng-model="filter.name" value="true" name="sorting-type">
+        <div class="item-content">
+            Name
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+    </label>
 
-            <div class="track">
-                <div class="handle"></div>
-            </div>
-        </label>
-    </li>
+    <label class="item item-radio">
+        <input type="radio" ng-model="filter.timeleft" value="true" name="sorting-type">
+        <div class="item-content">
+            Timeleft
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+    </label>
+
+    <label class="item item-radio">
+        <input type="radio" ng-model="filter.category" value="true" name="sorting-type">
+        <div class="item-content">
+            Category
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+    </label>
     <li>
         <label class="item item-input">
             <input type="text" placeholder="Search by name..." ng-model="filter.filter"/>
         </label>
     </li>
+    <li class="item item-divider">
+        Choose category :
+    </li>
+    <label class="item item-radio" ng-repeat="category in categories">
+        <input type="radio" ng-model="filter.categoryId" value="{{category.Id}}" name="categoryId">
+        <div class="item-content">
+            {{category.Name}}
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+    </label>
     <li>
-        <button class="button button-block button-positive" ng-click="getProducts()">Filter products
+        <button class="button button-block button-positive" ng-click="sort()">Filter products
         </button>
     </li>
 </div>

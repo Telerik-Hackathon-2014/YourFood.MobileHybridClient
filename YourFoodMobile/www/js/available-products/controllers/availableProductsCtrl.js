@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('AvailableProductsCtrl', function ($scope, $location, availableProductsData, identity) {
+app.controller('AvailableProductsCtrl', function ($scope, $location, availableProductsData, identity, productsCategoriesData) {
     if (!identity.isAuthenticated()) {
         $location.path('/login');
         return;
@@ -20,9 +20,16 @@ app.controller('AvailableProductsCtrl', function ($scope, $location, availablePr
         availableProductsData.getAllAvailableProducts(
             $scope.filter,
             function (data) {
-                console.log(data);
+                console.log($scope.filter);
                 $scope.availableProducts = data.value;
             });
+    }
+
+    function getCategories() {
+        productsCategoriesData.getAllProductCategories(
+            function (data) {
+                $scope.categories = data;
+            })
     }
 
     $scope.nextPage = function () {
@@ -56,23 +63,6 @@ app.controller('AvailableProductsCtrl', function ($scope, $location, availablePr
         getProducts();
     };
 
-//    if (identity.isAuthenticated()) {
-//        productsData.getAvailableProducts(identity.currentUser()._id, function (availableProducts) {
-//            $scope.availableProducts = availableProducts;
-//
-//            for (var i = 0; i < availableProducts.length; i += 1) {
-//                var purchaseDate = new Date(availableProducts[i].purchaseDate);
-//                var currentTime = new Date();
-//
-//                // Calculate the difference in milliseconds
-//                var timeDiff = currentTime.getTime() - purchaseDate.getTime();
-//
-//                // Convert back to days and return
-//                var freshness = availableProducts[i].lifetime - Math.round(timeDiff / one_day);
-//                $scope.availableProducts[i].freshness = freshness;
-//            }
-//        });
-//    }
-
     getProducts();
+    getCategories();
 });

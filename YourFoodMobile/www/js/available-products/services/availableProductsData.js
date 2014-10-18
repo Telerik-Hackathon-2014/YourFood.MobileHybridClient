@@ -9,15 +9,12 @@ app.factory('availableProductsData',
             getAllAvailableProducts: function (filters, success) {
                 var searchFilters = '?$expand=Product&$expand=Product/Category';
 
-                if (filters.name) {
+                if (filters.name == 'true') {
                     searchFilters += '&$orderby=Product/Name';
                 }
-                if (filters.timeleft) {
-                    searchFilters += '&$orderby=Product/ExpirationDate'
+                if (filters.timeleft == 'true') {
+                    searchFilters += '&$orderby=ExpirationDate'
                 }
-//                if (filters.frequency) {
-//                    searchFilters += '&$select=LifetimeInDays';
-//                }
                 if (filters.categoryId) {
                     searchFilters += '&filter=Product/CategoryId eq ' + filters.categoryId;
                 }
