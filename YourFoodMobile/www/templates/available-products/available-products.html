@@ -9,7 +9,7 @@
             <div class="responsive-sm">
                 <a class="item item-avatar " ng-repeat="product in availableProducts"
                    href="#/catalog-product-details/{{product.ProductId}}">
-                    <img src="{{product.Product.ImageUrl}}" alt="no image found"/>
+                    <img ng-src="{{product.Product.ImageUrl}}" alt="no image found"/>
                     <strong>{{product.Product.Name}}</strong>
                     <br/>
                     <small>{{product.Product.Category.Name}}</small>
