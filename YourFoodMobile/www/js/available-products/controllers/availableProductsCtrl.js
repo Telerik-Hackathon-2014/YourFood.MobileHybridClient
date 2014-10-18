@@ -6,14 +6,6 @@ app.controller('AvailableProductsCtrl', function ($scope,$rootScope, $location, 
         return;
     }
 
-    document.addEventListener('deviceready', function () {
-        navigator.camera.getPicture(function (image) {
-            $scope.imageURI = image;
-        }, function (err) {
-            $scope.error = 'CAMERA NOT WORKING';
-        });
-    });
-
     $rootScope.availableProductsFilters = {};
     $rootScope.tab = $rootScope.tab || {};
 

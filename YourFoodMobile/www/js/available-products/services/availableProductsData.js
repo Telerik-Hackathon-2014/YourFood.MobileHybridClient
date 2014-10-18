@@ -9,12 +9,21 @@ app.factory('availableProductsData',
             getAllAvailableProducts: function (filters, success) {
                 var searchFilters = '?$expand=Product&$expand=Product/Category';
 
-                if (filters.name == 'true') {
+                if (filters.orderBy == 'name') {
                     searchFilters += '&$orderby=Product/Name';
                 }
-                if (filters.timeleft == 'true') {
+                else if (filters.orderBy == 'timeleft') {
                     searchFilters += '&$orderby=ExpirationDate'
                 }
+                else if (filters.orderBy == 'category') {
+                    searchFilters += '&$orderby=Product/Category/Name'
+                }
+
+                if (filters.filter) {
+                    searchFilters += '&$filter=Name eq \'' + filters.filter + '\'';
+                }
+
+
                 if (filters.categoryId) {
                     searchFilters += '&$filter=Product/CategoryId eq ' + filters.categoryId;
                 }

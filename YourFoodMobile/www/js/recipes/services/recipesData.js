@@ -8,12 +8,10 @@ app.factory('recipesData',
             getAllRecipes: function (filters, success) {
                 var searchFilters = '?$expand=Category';
 
-                if (filters.categoryName) {
-                    searchFilters += '&$orderby=Category/Name';
-                }
-
-                if (filters.name) {
+                if (filters.orderBy == "name") {
                     searchFilters += '&$orderby=Name';
+                }else if (filters.orderBy == "category") {
+                    searchFilters += '&$orderby=Category/Name';
                 }
 
                 if (filters.filter) {
