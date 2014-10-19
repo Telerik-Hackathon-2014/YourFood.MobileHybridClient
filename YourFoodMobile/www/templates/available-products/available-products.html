@@ -6,13 +6,14 @@
 
     <ion-content class="has-header">
         <ion-list>
-            <div class="responsive-sm">
-                <a class="item item-avatar " ng-repeat="product in availableProducts"
+            <div class="responsive-sm" paging="true">
+                <a class="item item-avatar" ng-swipe-right="swipeRight(product.Id)" ng-repeat="product in availableProducts"
                    href="#/catalog-product-details/{{product.ProductId}}">
                     <img ng-src="{{product.Product.ImageUrl}}" alt="no image found"/>
                     <strong>{{product.Product.Name}}</strong>
                     <br/>
-                    Categoty: <small>{{product.Product.Category.Name}}</small>
+                    Categoty:
+                    <small>{{product.Product.Category.Name}}</small>
                     <br/>
                     Expires in... <strong>{{product.freshness}}</strong> days
                     <br/>

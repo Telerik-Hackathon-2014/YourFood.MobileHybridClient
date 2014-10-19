@@ -10,7 +10,6 @@ app.factory('auth', function ($http, $q, $location, identity, authorization, bas
             $http.post(usersApi + '/register', user)
                 .success(function () {
                     deferred.resolve();
-                    $location.path('/login');
                 }, function (response) {
                     deferred.reject(response);
                 });

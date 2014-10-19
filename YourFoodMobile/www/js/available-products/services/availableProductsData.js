@@ -65,8 +65,28 @@ app.factory('availableProductsData',
                         notifier.error('Could not add product to fridge: ' + err);
                     });
             },
-            updateToUsed: function (productId) {
+            updateToUsed: function (product, success) {
 
+                var newProduct = {
+                    "Id": product.Id,
+                    "DateAdded": product.DateAdded,
+                    "ExpirationDate": product.ExpirationDate,
+                    "IsFinished": true,
+                    "ProductId": product.ProductId,
+                    "UserId": product.UserId
+                };
+
+                var headers = authorization.getAuthorizationHeader();
+                headers['Content-type'] = 'application/json';
+
+                var addon = '(' + product + ')';
+                $http.delete(productsApi + addon, {headers: headers})
+                    .success(function (data) {
+                        success(data);
+                    })
+                    .error(function (err) {
+                        notifier.error('(*(*(*&(*&(*&(*&');
+                    })
             }
         }
     });

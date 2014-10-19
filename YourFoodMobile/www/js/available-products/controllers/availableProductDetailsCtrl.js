@@ -2,7 +2,7 @@
 
 app.controller('AvailableProductDetailsCtrl', function ($scope, $stateParams, availableProductsData, identity) {
     if (!identity.isAuthenticated()) {
-        $location.path('/login');
+        $location.path('/home');
         return;
     }
 

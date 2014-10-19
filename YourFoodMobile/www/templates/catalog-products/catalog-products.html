@@ -1,10 +1,10 @@
 <ion-view title="Catalog products">
     <ion-content class="has-header">
         <ion-list>
-            <div class="responsive-sm">
-                <a class="item item-avatar " ng-repeat="item in catalogProducts"
+            <div class="responsive-sm" paging="true">
+                <a class="item item-avatar" ng-swipe-right="swipeRight()" ng-repeat="item in catalogProducts"
                    href="#/catalog-product-details/{{item.Product.Id}}">
-                    <img src="{{item.Product.ImageUrl}}" alt="no image found"/>
+                    <img ng-src="{{item.Product.ImageUrl}}" alt="no image found"/>
                     <strong>{{item.Product.Name}}</strong>
                     <br/>
                     <small>{{item.Product.Category.Name}}</small>

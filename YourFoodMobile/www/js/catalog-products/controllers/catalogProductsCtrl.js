@@ -5,6 +5,12 @@ app.controller('CatalogProductsCtrl', function ($scope, $rootScope, catalogProdu
     $rootScope.catalogProductsFilters = {};
     $rootScope.tab = $rootScope.tab || {};
 
+    $scope.showActions = true;
+
+    $scope.swipeRight = function () {
+//        alert('KJHASDASKJLDASDKHJL');
+    };
+
     function showAvailableProductsTab() {
         $rootScope.tab.isAvailabeProductsTab = false;
         $rootScope.tab.isCatalogProductsTab = true;

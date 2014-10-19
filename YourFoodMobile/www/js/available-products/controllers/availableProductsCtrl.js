@@ -13,6 +13,11 @@ app.controller('AvailableProductsCtrl', function ($scope, $rootScope, $location,
     $scope.identity = identity;
     $scope.isLogged = identity.isAuthenticated();
 
+    $scope.showActions = true;
+
+    $scope.swipeRight = function (id) {
+        deleteById(id);
+    };
 
     function showAvailableProductsTab() {
         $rootScope.tab.isAvailabeProductsTab = true;
@@ -30,22 +35,35 @@ app.controller('AvailableProductsCtrl', function ($scope, $rootScope, $location,
                 for (var i = 0; i < data.value.length; i += 1) {
                     var product = data.value[i];
 
+                    if (product.IsFinished) {
+                        continue;
+                    }
+
                     var dateExpiring = new Date(product.ExpirationDate);
                     var dateAdded = new Date(product.DateAdded);
                     var currentTime = new Date();
 
                     // Calculate the difference in milliseconds
-                    var timeDiff = dateExpiring.getTime() - currentTime.getTime();
+                    var timeDiff = currentTime.getTime() - dateAdded.getTime();
                     var timeDiffLifetimeInDays = dateExpiring.getTime() - dateAdded.getTime();
 
                     // Convert back to days and return
-                    var freshness = Math.round(timeDiff / one_day);
                     var lifetimeInDays = Math.round(timeDiffLifetimeInDays / one_day);
+                    var freshness = lifetimeInDays - Math.round(timeDiff / one_day);
                     var percent = freshness / lifetimeInDays * 100;
 
                     product.freshness = freshness;
                     product.lifetimeInDays = lifetimeInDays;
                     product.lifetimePercent = 100 - percent;
+
+                    if (freshness < 0) {
+                        deleteById(product.Id);
+                    }
+
+                    console.log('Freshness -> ' + freshness);
+                    console.log('Lifetime in days -> ' + lifetimeInDays);
+                    console.log('Life time percent -> ' + product.lifetimePercent);
+                    console.log('---------------------------------------------');
 
                     $rootScope.availableProducts.push(product);
                 }
@@ -57,6 +75,16 @@ app.controller('AvailableProductsCtrl', function ($scope, $rootScope, $location,
             function (data) {
                 $scope.categories = data;
             })
+    }
+
+    function deleteById(id) {
+        availableProductsData.getProductById(id,
+            function (product) {
+                availableProductsData.updateToUsed(id,
+                    function (data) {
+                        getProducts($rootScope.availableProductsFilters);
+                    });
+            });
     }
 
     $scope.sort = function () {

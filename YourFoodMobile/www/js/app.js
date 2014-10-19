@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ionic', 'ngRoute', 'ngCookies']);
+var app = angular.module('app', ['ionic', 'ngRoute', 'ngCookies','ngTouch']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
 

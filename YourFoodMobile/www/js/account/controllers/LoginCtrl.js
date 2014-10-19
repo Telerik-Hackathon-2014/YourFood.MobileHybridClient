@@ -34,7 +34,7 @@ app.controller('LoginCtrl',
                     $scope.user.password = '';
                 }
 
-                $location.path('/login');
+                $location.path('/home');
             })
         };
 

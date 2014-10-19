@@ -3,7 +3,7 @@
 app.controller('RecipesCtrl',
     function ($scope, $rootScope, $location, recipesData, identity, recipesCategoriesData) {
         if (!identity.isAuthenticated()) {
-            $location.path('/login');
+            $location.path('/home');
             return;
         }
         $rootScope.tab = $rootScope.tab || {};

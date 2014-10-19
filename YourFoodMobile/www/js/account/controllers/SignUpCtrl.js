@@ -15,8 +15,6 @@ app.controller('SignUpCtrl',
                     "ConfirmPassword": user.Password
                 };
 
-                console.log(newUser);
-
                 auth.signup(newUser).then(function (success) {
                     if (success) {
                         $location.path('/login');
