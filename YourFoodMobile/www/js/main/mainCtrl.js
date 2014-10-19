@@ -14,10 +14,11 @@ app.controller('MainCtrl', function ($scope, $rootScope, $location, identity, ca
                 var image = imageData;
 
                 cameraData.postImage(image, function (data) {
-                    $location.path('/')
+                    notifier.success('Successfully photo added!');
+                    $location.path('/');
                 });
             }, function (err) {
-                notifier.error = 'CAMERA NOT WORKING';
+                notifier.error('Picture upload fail!');
             }, picConfig);
         });
     };

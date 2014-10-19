@@ -6,6 +6,7 @@
 
     <ion-content class="has-header">
         <ion-list>
+            <a class=" button button-block button-balanced" href="#/catalog-products">   Add product</a>
             <div class="responsive-sm" paging="true">
                 <a class="item item-avatar" ng-swipe-right="swipeRight(product.Id)" ng-repeat="product in availableProducts"
                    href="#/catalog-product-details/{{product.ProductId}}">
