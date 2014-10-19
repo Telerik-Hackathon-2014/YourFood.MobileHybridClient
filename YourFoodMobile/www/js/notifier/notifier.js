@@ -4,13 +4,14 @@ app.factory('notifier', function () {
 
     return {
         success: function (message) {
-            console.log(message);
+            document.addEventListener('deviceready', function () {
+                navigator.notification.vibrate(2000);
+            });
         },
         error: function (message) {
-            console.log(message);
-        },
-        warning: function (message) {
-            console.log(message);
+            document.addEventListener('deviceready', function () {
+                navigator.notification.beep(3);
+            });
         }
     }
 
