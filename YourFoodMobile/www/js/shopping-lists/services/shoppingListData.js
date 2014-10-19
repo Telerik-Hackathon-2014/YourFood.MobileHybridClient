@@ -6,7 +6,7 @@ app.factory('shoppingListData', function ($http, $rootScope, baseUrl, identity, 
 
     return  {
         getCurrentList: function (success) {
-            var currentShoppingList = localStorage.getItem('currentShoppingList');
+            var currentShoppingList = localStorage.getItem(identity.getCurrentUser().userName);
             var parsed = JSON.parse(currentShoppingList);
 
             success(parsed);
@@ -24,10 +24,11 @@ app.factory('shoppingListData', function ($http, $rootScope, baseUrl, identity, 
 //                })
         },
         createList: function (success) {
+            var username = identity.getCurrentUser().userName;
             var initialList = {listOfProducts: []};
-            localStorage.setItem('currentShoppingList', JSON.stringify(initialList));
+            localStorage.setItem(username, JSON.stringify(initialList));
 
-            success(JSON.parse(localStorage.getItem('currentShoppingList')));
+            success(JSON.parse(localStorage.getItem(username)));
 
 //            var newListUrl = shopListApi;
 //            $http.post(newListUrl, {}, headers)
@@ -41,7 +42,8 @@ app.factory('shoppingListData', function ($http, $rootScope, baseUrl, identity, 
 //                })
         },
         addToList: function (catalogProduct, success) {
-            var currentShoppingList = JSON.parse(localStorage.getItem('currentShoppingList'));
+            var username = identity.getCurrentUser().userName;
+            var currentShoppingList = JSON.parse(localStorage.getItem(username));
 
             console.log(catalogProduct);
 //            var availableProduct = {};
@@ -52,7 +54,7 @@ app.factory('shoppingListData', function ($http, $rootScope, baseUrl, identity, 
 //            availableProduct.ExpirationDate.setDate(availableProduct.DateAdded.getDate() + catalogProduct.LifetimeInDays);
 
             currentShoppingList.listOfProducts.push(catalogProduct);
-            localStorage.setItem('currentShoppingList', JSON.stringify(currentShoppingList));
+            localStorage.setItem(username, JSON.stringify(currentShoppingList));
             console.log(availableProduct);
 
 //            $http.post(shopListApi + '(' + 16 + ')', availableProduct, {headers: authorization.getAuthorizationHeader()})
@@ -65,6 +67,7 @@ app.factory('shoppingListData', function ($http, $rootScope, baseUrl, identity, 
 //                });
         },
         removeFromList: function (id) {
+            var username = identity.getCurrentUser().userName;
             var currentShoppingList;
             this.getCurrentList(function (data) {
                 currentShoppingList = data;
@@ -74,7 +77,7 @@ app.factory('shoppingListData', function ($http, $rootScope, baseUrl, identity, 
             }).indexOf(id);
 
             currentShoppingList.listOfProducts.splice(index,1);
-            localStorage.setItem('currentShoppingList', JSON.stringify(currentShoppingList));
+            localStorage.setItem(username, JSON.stringify(currentShoppingList));
         }
     }
 });

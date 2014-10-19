@@ -38,19 +38,6 @@ app.controller('LoginCtrl',
             })
         };
 
-        function createList() {
-            shoppingListData.createList(function(list){
-                $rootScope.currentShopList = list;
-                console.log(list);
-            })
-        }
-
-        shoppingListData.getCurrentList(function (data) {
-            if(!data){
-                createList();
-            }
-        });
-
         $scope.changeToSignUp = function () {
             $scope.loginActive = false;
         };

@@ -23,7 +23,7 @@ app.controller('CatalogProductDetailsCtrl', function ($scope, $stateParams, $loc
     $scope.addToList = function () {
         shoppingListData.addToList($scope.catalogProduct,
             function (data) {
-                $location.path('/available-products')
+                $location.path('/shopping-list')
             });
     };
 
