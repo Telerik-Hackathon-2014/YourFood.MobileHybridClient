@@ -19,9 +19,9 @@ app.factory('availableProductsData',
                     searchFilters += '&$orderby=Product/Category/Name'
                 }
 
-                if (filters.filter) {
-                    searchFilters += '&$filter=Name eq \'' + filters.filter + '\'';
-                }
+//                if (filters.filter) {
+//                    searchFilters += '&$filter=Name eq \'' + filters.filter + '\'';
+//                }
 
 
                 if (filters.categoryId) {

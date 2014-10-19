@@ -7,7 +7,7 @@ app.controller('AvailableProductDetailsCtrl', function ($scope, $stateParams, av
     }
 
 //    $scope.currentUserShoppingListId = identity.getCurrentUser().shoppingList;
-    $scope.isLogged = identity.isAuthenticated();
+  //  $scope.isLogged = identity.isAuthenticated();
 
     $scope.productId = $stateParams.id;
 

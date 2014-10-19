@@ -4,8 +4,8 @@
     <!--</ion-nav-buttons>-->
     <ion-content class="has-header">
         <ion-list>
-            <a class="item item-avatar" ng-repeat="recipe in recipes" href="#/tab/recipes/{{recipe.Id}}">
-                <img src="{{recipe.ImageUrl}}"/>
+            <a class="item item-avatar" ng-repeat="recipe in recipes | filter:recipeNameFilter" href="#/tab/recipes/{{recipe.Id}}">
+                <img ng-src="{{recipe.ImageUrl}}"/>
                 <strong>{{recipe.Name}}</strong>
                 <br/>
                 <small>{{recipe.Category.Name}}</small>

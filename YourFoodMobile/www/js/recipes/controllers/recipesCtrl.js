@@ -18,6 +18,7 @@ app.controller('RecipesCtrl',
 
         $rootScope.recipeFilter = {};
 
+        $rootScope.recipeNameFilter = "";
 
         function getRecipes() {
             recipesData.getAllRecipes(

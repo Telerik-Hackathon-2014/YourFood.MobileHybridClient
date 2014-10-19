@@ -81,28 +81,28 @@
 
 <ion-side-menus ng-controller="MainCtrl">
 
-    <ion-side-menu-content drag-content="{{isLogged()}}" ng-controller="NavCtrl">
-        <ion-nav-bar class="bar-positive" ng-show="isLogged()">
+    <ion-side-menu-content drag-content="{{isUserLogged()}}" ng-controller="NavCtrl">
+        <ion-nav-bar class="bar-positive" ng-show="isUserLogged()">
             <ion-nav-back-button class="button-icon ion-arrow-left-c">
             </ion-nav-back-button>
         </ion-nav-bar>
-        <ion-nav-buttons side="left" ng-show="isLogged()">
-            <button ng-show="isLogged()" class="button button-icon button-clear ion-navicon" ng-click="showMenu()">
-            </button>
-        </ion-nav-buttons>
+        <!--<ion-nav-buttons side="left" ng-show="isLogged()">-->
+            <!--<button ng-show="isLogged()" class="button button-icon button-clear ion-navicon" ng-click="showMenu()">-->
+            <!--</button>-->
+        <!--</ion-nav-buttons>-->
 
-        <ion-nav-buttons side="right" ng-show="isLogged()">
-            <button ng-show="isLogged()" class="button button-icon button-clear ion-ios7-camera"
+        <ion-nav-buttons side="right" ng-show="isUserLogged()">
+            <button ng-show="isUserLogged()" class="button button-icon button-clear ion-ios7-camera"
                     ng-click="takePictureForShoppingList()">
             </button>
-            <button ng-show="isLogged()" class="button button-icon button-clear ion-ios7-gear"
+            <button ng-show="isUserLogged()" class="button button-icon button-clear ion-navicon"
                     ng-click="showRightMenu()">
             </button>
         </ion-nav-buttons>
         <ion-nav-view animation="slide-left-right"></ion-nav-view>
     </ion-side-menu-content>
 
-    <ion-side-menu side="left" ng-show="isLogged()">
+    <ion-side-menu side="right" ng-show="isLogged()">
         <ion-header-bar class="bar bar-header bar-energized">
             <h1 class="title">Filters</h1>
         </ion-header-bar>
@@ -122,45 +122,14 @@
         </ion-content>
     </ion-side-menu>
 
-    <ion-side-menu side="right" ng-controller="LoginCtrl" ng-show="isLogged()">
-        <ion-header-bar class="bar bar-header bar-royal">
-            <h1 class="title">Configurations</h1>
-        </ion-header-bar>
-        <ion-content>
-            <ul class="list">
-                <li>
-                    <a class="item" menu-close nav-clear href="#/profile">Profile</a>
-                </li>
-                <li>
-                    <a class="item" menu-close nav-clear href="#/login" ng-click="logout()">Logout</a>
-                </li>
+    <!--<ion-side-menu side="right" ng-controller="LoginCtrl" ng-show="isLogged()">-->
+        <!--<ion-header-bar class="bar bar-header bar-royal">-->
+            <!--<h1 class="title">Configurations</h1>-->
+        <!--</ion-header-bar>-->
+        <!--<ion-content>-->
 
-                <div ng-show="isAdmin()">
-                    <li class="item item-divider">
-                        Products administration
-                    </li>
-                    <li>
-                        <a class="item" menu-close nav-clear href="#/create-product">Create product</a>
-                    </li>
-                    <li>
-                        <a class="item" menu-close nav-clear href="#/create-products-category">Create category
-                            product</a>
-                    </li>
-
-                    <li class="item item-divider">
-                        Recipes administration
-                    </li>
-                    <li>
-                        <a class="item" menu-close nav-clear href="#/create-recipe">Create recipe</a>
-                    </li>
-                    <li>
-                        <a class="item" menu-close nav-clear href="#/create-products-category">Create category
-                            product</a>
-                    </li>
-                </div>
-            </ul>
-        </ion-content>
-    </ion-side-menu>
+        <!--</ion-content>-->
+    <!--</ion-side-menu>-->
 
 </ion-side-menus>
 

@@ -12,6 +12,7 @@ app.controller('RecipeDetailsCtrl',
 
         recipesData.getRecipeById($scope.recipeId,
             function (data) {
+                console.log(data)
                 $scope.recipe = data;
             })
     });

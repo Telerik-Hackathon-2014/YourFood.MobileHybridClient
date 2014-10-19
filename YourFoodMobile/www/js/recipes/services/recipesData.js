@@ -14,9 +14,9 @@ app.factory('recipesData',
                     searchFilters += '&$orderby=Category/Name';
                 }
 
-                if (filters.filter) {
-                    searchFilters += '&$filter=Name eq \'' + filters.filter + '\'';
-                }
+//                if (filters.filter) {
+//                    searchFilters += '&$filter=Name eq \'' + filters.filter + '\'';
+//                }
 
                 if (filters.CategoryId) {
                     searchFilters += '&$filter=CategoryId eq ' + filters.CategoryId;
@@ -31,7 +31,7 @@ app.factory('recipesData',
                     });
             },
             getRecipeById: function (id, success) {
-                var addon = '(' + id + ')?$expand=Category&$expand=Ingredients/Product';
+                var addon = '(' + id + ')?$expand=Category,Ingredients/Product';
 
                 $http.get(recipesApi + addon)
                     .success(function (data) {

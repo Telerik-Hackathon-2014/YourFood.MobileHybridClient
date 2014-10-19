@@ -3,7 +3,7 @@
         Sort products by:
     </li>
 
-    <label class="item item-radio" >
+    <label class="item item-radio" ng-click="sort()" menu-close nav-clear>
         <input type="radio" ng-model="catalogProductsFilters.orderBy" value="name" name="sorting-type">
         <div class="item-content">
             Name
@@ -11,7 +11,7 @@
         <i class="radio-icon ion-checkmark"></i>
     </label>
 
-    <label class="item item-radio" >
+    <label class="item item-radio" ng-click="sort()" menu-close nav-clear>
         <input type="radio" ng-model="catalogProductsFilters.orderBy" value="category" name="sorting-type">
         <div class="item-content">
             Category
@@ -37,7 +37,7 @@
         </div>
         <i class="radio-icon ion-checkmark"></i>
     </label>
-    <label class="item item-radio" ng-repeat="category in categories" menu-close nav-clear>
+    <label class="item item-radio" ng-click="sort()" ng-repeat="category in categories" menu-close nav-clear>
         <input type="radio" ng-model="catalogProductsFilters.categoryId" value="{{category.Id}}" name="categoryId">
         <div class="item-content">
             {{category.Name}}

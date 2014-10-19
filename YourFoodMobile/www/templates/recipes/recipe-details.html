@@ -3,21 +3,24 @@
         <ion-list>
             <div class="row">
                 <div class="col col-33 img-container">
-                    <img src="{{recipe.ImageUrl}}">
+                    <img ng-src="{{recipe.ImageUrl}}">
                 </div>
                 <div class="col">
                     <h4>{{recipe.Name}}</h4>
                     <h5>{{recipe.Category.Name }}</h5>
+                    <span class="ion-clock icon-left"></span>
+                    <span>{{recipe.TimeToMakeInMinutes}}</span>
                 </div>
             </div>
-
             <div class="item item-body">
                 <span>Ingredients:</span>
-                <h5 ng-repeat="product in recipe.Ingredients">{{product.Product.Name}}</h5>
+                <h5 ng-repeat="product in recipe.Ingredients">
+                    {{product.Quantity}} {{product.UnitType}}&nbsp;&nbsp;<strong>{{product.Product.Name}}</strong>
+                </h5>
             </div>
             <div class="item item-body">
+                <span>Description</span>
                 <p>{{recipe.Description}}</p>
-
                 <p>
                     <a href="#" class="subdued">1 Like</a>
                 </p>

@@ -22,7 +22,7 @@ app.controller('MainCtrl', function ($scope,$location, identity, cameraData, not
         });
     };
 
-    $scope.isLogged = function () {
+    $rootScope.isLogged = function () {
         return  identity.isAuthenticated();
     };
 
