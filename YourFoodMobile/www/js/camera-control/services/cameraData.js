@@ -10,7 +10,6 @@ app.factory('cameraData', function ($http, notifier, authorization, baseUrl) {
 
             $http.post(imageApi, {ImageData: image}, headers)
                 .success(function (data) {
-                    alert(data.length);
                     success(data);
                 })
                 .error(function (err) {
