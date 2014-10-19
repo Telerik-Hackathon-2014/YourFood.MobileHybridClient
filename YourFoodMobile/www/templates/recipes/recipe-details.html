@@ -8,12 +8,16 @@
                 <div class="col">
                     <h4>{{recipe.Name}}</h4>
                     <h5>{{recipe.Category.Name }}</h5>
+                    <span class="ion-clock icon-left"></span>
+                    <span>{{recipe.TimeToMakeInMinutes}}</span>
                 </div>
             </div>
 
             <div class="item item-body">
                 <span>Ingredients:</span>
-                <h5 ng-repeat="product in recipe.Ingredients">{{product.Product.Name}}</h5>
+                <h5 ng-repeat="product in recipe.Ingredients">
+                    {{product.Product.Name}}
+                </h5>
             </div>
             <div class="item item-body">
                 <p>{{recipe.Description}}</p>

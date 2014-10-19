@@ -31,7 +31,7 @@ app.factory('recipesData',
                     });
             },
             getRecipeById: function (id, success) {
-                var addon = '(' + id + ')?$expand=Category&$expand=Ingredients/Product';
+                var addon = '(' + id + ')?$expand=Category,Ingredients/Product';
 
                 $http.get(recipesApi + addon)
                     .success(function (data) {
