@@ -13,10 +13,9 @@
                     <img ng-src="{{product.Product.ImageUrl}}" alt="no image found"/>
                     <strong>{{product.Product.Name}}</strong>
                     <br/>
-                    Categoty:
                     <small>{{product.Product.Category.Name}}</small>
                     <br/>
-                    Expires in... <strong>{{product.freshness}}</strong> days
+                    <span ng-show="product.freshness < 200">Expires in... <strong>{{product.freshness}}</strong> days</span>
                     <br/>
                     <progress style="background-color: green;" max="100" value="{{product.lifetimePercent}}"></progress>
                 </a>
