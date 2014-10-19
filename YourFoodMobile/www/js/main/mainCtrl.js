@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('MainCtrl', function ($scope,$location, identity, cameraData, notifier) {
+app.controller('MainCtrl', function ($scope, $rootScope, $location, identity, cameraData, notifier) {
 
     $scope.takePictureForShoppingList = function () {
         document.addEventListener('deviceready', function () {
