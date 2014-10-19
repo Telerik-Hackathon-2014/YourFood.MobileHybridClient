@@ -1,27 +1,13 @@
 <ion-view title="Shopping list">
     <ion-content class="has-header">
         <ion-list>
-            <a class="col col-25 item item-avatar pull-right button button-balanced icon ion-ios7-download-outline" href="#/catalog-products"></a>
-            <!--<a class="item item-avatar" ng-repeat="product in shoppingList">-->
-                <!--<img src="{{product.ImageUrl}}"/>-->
-                <!--<strong>{{product.Name}}</strong>-->
-                <!--<br/>-->
-                <!--<small>{{product.Quantity}}</small>-->
-            <!--</a>-->
+            <div class="col col-25 item item-avatar pull-right button button-balanced icon ion-ios7-download-outline"
+                 ng-repeat="product in products">
+                <img ng-src="{{product.ImageUrl}}"/>
+                <strong>{{product.Product.Name}}</strong>
+                <br/>
+                <small>{{product.Quantity}} {{ product.UnitType}}</small>
+            </div>
         </ion-list>
     </ion-content>
 </ion-view>
-
-
-<!--<ion-content class="has-header">-->
-    <!--<ion-list>-->
-        <!--<div class="col col-25 item item-avatar pull-right button button-balanced icon ion-ios7-download-outline"-->
-           <!--ng-repeat="recipe in recipes | filter:recipeNameFilter" href="#/tab/recipes/{{recipe.Id}}">-->
-            <!--<img ng-src="{{recipe.ImageUrl}}"/>-->
-            <!--<strong>{{recipe.Name}}</strong>-->
-            <!--<br/>-->
-            <!--<small>{{recipe.Category.Name}}</small>-->
-        <!--</div>-->
-    <!--</ion-list>-->
-<!--</ion-content>-->
-<!--</ion-view>-->

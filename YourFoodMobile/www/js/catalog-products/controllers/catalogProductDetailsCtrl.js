@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('CatalogProductDetailsCtrl', function ($scope, $stateParams, $location, catalogProductsData, availableProductsData) {
+app.controller('CatalogProductDetailsCtrl', function ($scope, $stateParams, $location, catalogProductsData, availableProductsData, shoppingListData) {
     $scope.data = 'CatalogProductDetailsCtrl';
     $scope.catalogProductId = $stateParams.id;
 
@@ -19,6 +19,13 @@ app.controller('CatalogProductDetailsCtrl', function ($scope, $stateParams, $loc
             });
     };
 
-    GetCurrentCatalogProductById($scope.catalogProductId);
 
+    $scope.addToList = function () {
+        shoppingListData.addToList($scope.catalogProduct,
+            function (data) {
+                $location.path('/available-products')
+            });
+    };
+
+    GetCurrentCatalogProductById($scope.catalogProductId);
 });
