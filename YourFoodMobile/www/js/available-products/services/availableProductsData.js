@@ -39,7 +39,7 @@ app.factory('availableProductsData',
             getProductById: function (id, success) {
                 var addon = '(' + id + ')/Product?$expand=Category';
 
-                $http.get(productsApi + addon, headers)
+                $http.get(productsApi + addon, {headers: authorization.getAuthorizationHeader()})
                     .success(function (data) {
                         success(data);
                     })

@@ -10,7 +10,7 @@ app.factory('notifier', function () {
         },
         error: function (message) {
             document.addEventListener('deviceready', function () {
-                navigator.notification.beep(3);
+                navigator.notification.beep(1);
             });
         }
     }
