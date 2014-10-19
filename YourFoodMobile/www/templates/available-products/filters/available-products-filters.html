@@ -45,7 +45,7 @@
         </div>
         <i class="radio-icon ion-checkmark"></i>
     </label>
-    <label class="item item-radio" ng-click="sort()" ng-repeat="category in categories" menu-close nav-clear>
+    <label class="item item-radio" ng-click="sort()" ng-repeat="category in availableProductsCategories" menu-close nav-clear>
         <input type="radio" ng-model="availableProductsFilters.categoryId" value="{{category.Id}}" name="categoryId">
         <div class="item-content">
             {{category.Name}}

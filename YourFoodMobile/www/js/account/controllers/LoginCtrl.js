@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('LoginCtrl',
-    function ($scope, $location, identity, auth) {
+    function ($scope, $location, $rootScope, identity, auth, shoppingListData) {
         $scope.identity = identity;
         $scope.loginActive = true;
 
@@ -37,6 +37,19 @@ app.controller('LoginCtrl',
                 $location.path('/home');
             })
         };
+
+        function createList() {
+            shoppingListData.createList(function(list){
+                $rootScope.currentShopList = list;
+                console.log(list);
+            })
+        }
+
+        shoppingListData.getCurrentList(function (data) {
+            if(!data){
+                createList();
+            }
+        });
 
         $scope.changeToSignUp = function () {
             $scope.loginActive = false;

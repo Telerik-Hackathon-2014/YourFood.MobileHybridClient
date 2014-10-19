@@ -1,7 +1,13 @@
 'use strict';
 
 app.controller('ShoppingListCtrl', function ($scope, $rootScope, shoppingListData, identity) {
-    function hideTabs () {
+
+    $scope.removeProduct = function (id) {
+        shoppingListData.removeFromList(id);
+        getShoppingList();
+    };
+
+    function hideTabs() {
         $rootScope.tab.isAvailabeProductsTab = false;
         $rootScope.tab.isCatalogProductsTab = false;
         $rootScope.tab.isRecipesTab = false;
@@ -15,21 +21,24 @@ app.controller('ShoppingListCtrl', function ($scope, $rootScope, shoppingListDat
 
     function getShoppingList() {
         shoppingListData.getCurrentList(function (data) {
-                $rootScope.currentShopList = data.value;
-                if ( $rootScope.currentShopList ) {
-                    createList();
-                }
-            });
+            console.log(data);
+            $rootScope.currentShopList = data.listOfProducts;
+        });
     }
 
     function createList() {
-        shoppingListData.createList(function(list){
+        shoppingListData.createList(function (list) {
             $rootScope.currentShopList = list;
             console.log(list);
         })
     }
 
+    shoppingListData.getCurrentList(function (data) {
+        if (!data) {
+            createList();
+        }
+    });
 
-    createList();
     getShoppingList();
+
 });

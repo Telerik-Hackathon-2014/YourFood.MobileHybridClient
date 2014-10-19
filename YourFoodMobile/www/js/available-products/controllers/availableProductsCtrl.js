@@ -73,7 +73,7 @@ app.controller('AvailableProductsCtrl', function ($scope, $rootScope, $location,
     function getCategories() {
         productsCategoriesData.getAllProductCategories(
             function (data) {
-                $scope.categories = data;
+                $rootScope.availableProductsCategories = data;
             })
     }
 
