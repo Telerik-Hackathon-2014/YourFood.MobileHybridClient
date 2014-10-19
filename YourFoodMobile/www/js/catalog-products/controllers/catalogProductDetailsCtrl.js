@@ -15,16 +15,15 @@ app.controller('CatalogProductDetailsCtrl', function ($scope, $stateParams, $loc
     $scope.addToFridge = function () {
         availableProductsData.addCatalogProductToAvailableProducts($scope.catalogProduct,
             function (data) {
-                $location.path('/available-products')
+                console.log($location.path());
+                $location.path('/available-products');
+                console.log($location.path());
             });
     };
 
 
     $scope.addToList = function () {
-        shoppingListData.addToList($scope.catalogProduct,
-            function (data) {
-                $location.path('/shopping-list')
-            });
+        shoppingListData.addToList($scope.catalogProduct);
     };
 
     GetCurrentCatalogProductById($scope.catalogProductId);

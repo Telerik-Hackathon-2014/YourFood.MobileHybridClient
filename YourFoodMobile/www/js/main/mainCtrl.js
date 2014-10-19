@@ -11,7 +11,7 @@ app.controller('MainCtrl', function ($scope, $rootScope, $location, identity, ca
             };
 
             navigator.camera.getPicture(function (imageData) {
-                var image = "data:image/jpeg;base64," + imageData;
+                var image = imageData;
 
                 cameraData.postImage(image, function (data) {
                     $location.path('/')

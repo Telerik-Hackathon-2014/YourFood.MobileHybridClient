@@ -15,10 +15,6 @@ app.controller('ShoppingListCtrl', function ($scope, $rootScope, shoppingListDat
 
     hideTabs();
 
-//    $scope.addProduct = function () {
-//        alert('Here!');
-//    };
-
     function getShoppingList() {
         shoppingListData.getCurrentList(function (data) {
             console.log(data);

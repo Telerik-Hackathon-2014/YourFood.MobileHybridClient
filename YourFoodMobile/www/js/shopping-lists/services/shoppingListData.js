@@ -55,7 +55,6 @@ app.factory('shoppingListData', function ($http, $rootScope, baseUrl, identity, 
 
             currentShoppingList.listOfProducts.push(catalogProduct);
             localStorage.setItem(username, JSON.stringify(currentShoppingList));
-            console.log(availableProduct);
 
 //            $http.post(shopListApi + '(' + 16 + ')', availableProduct, {headers: authorization.getAuthorizationHeader()})
 //                .success(function (data) {

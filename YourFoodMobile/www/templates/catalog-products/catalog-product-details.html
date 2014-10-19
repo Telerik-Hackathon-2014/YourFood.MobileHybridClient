@@ -1,4 +1,4 @@
-<ion-view title="{{catalogProduct.Name}}">
+<ion-view title="{{catalogProduct.Product.Name}}">
     <ion-content class="has-header">
         <ion-list>
             <div class="row">
@@ -12,13 +12,6 @@
             </div>
             <div class="item item-body">
                 <h2>Average freshness : <strong>{{catalogProduct.LifetimeInDays}}</strong> days</h2>
-                <h2>Unittype : {{catalogProduct.Product.UnitType}}</h2>
-                <br/>
-                <div class="range range-positive">
-                    <i class="icon ion-ios7-download-outline"></i>
-                    <input type="range" name="volume" min="0" max="100" value="33">
-                    <i class="icon ion-ios7-upload-outline"></i>
-                </div>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
@@ -26,7 +19,7 @@
                     <i class="icon ion-social-buffer"></i>
                     To fridge
                 </a>
-                <a class="tab-item" href="#" ng-click="addToList()">
+                <a class="tab-item" href="/shopping-list" ng-click="addToList()">
                     <i class="icon ion-social-buffer-outline"></i>
                     To list
                 </a>
