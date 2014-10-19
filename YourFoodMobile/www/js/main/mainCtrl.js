@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('MainCtrl', function ($scope, identity, cameraData, notifier) {
+app.controller('MainCtrl', function ($scope,$location, identity, cameraData, notifier) {
 
     $scope.takePictureForShoppingList = function () {
         document.addEventListener('deviceready', function () {
@@ -14,7 +14,7 @@ app.controller('MainCtrl', function ($scope, identity, cameraData, notifier) {
                 var image = "data:image/jpeg;base64," + imageData;
 
                 cameraData.postImage(image, function (data) {
-                    notifier.success(data);
+                    $location.path('/')
                 });
             }, function (err) {
                 notifier.error = 'CAMERA NOT WORKING';

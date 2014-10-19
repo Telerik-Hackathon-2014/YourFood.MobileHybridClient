@@ -64,6 +64,9 @@ app.factory('availableProductsData',
                     .error(function (err) {
                         notifier.error('Could not add product to fridge: ' + err);
                     });
+            },
+            updateToUsed: function (productId) {
+
             }
         }
     });

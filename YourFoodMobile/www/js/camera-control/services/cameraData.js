@@ -8,12 +8,12 @@ app.factory('cameraData', function ($http, notifier, authorization, baseUrl) {
             var headers = {headers: authorization.getAuthorizationHeader()};
             var imageApi = baseUrl + 'api/ReceiptScanner';
 
-            $http.post(imageApi, headers)
+            $http.post(imageApi, {ImageData: image}, headers)
                 .success(function (data) {
                     success(data);
                 })
                 .error(function (err) {
-                    alert.error('Picture not sent! ' + err.message);
+                    alert('Picture not sent! ' + err.message);
                 })
         }
     }

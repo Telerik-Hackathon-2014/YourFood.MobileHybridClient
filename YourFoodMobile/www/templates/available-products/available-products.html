@@ -12,8 +12,11 @@
                     <img src="{{product.Product.ImageUrl}}" alt="no image found"/>
                     <strong>{{product.Product.Name}}</strong>
                     <br/>
-                    <small>{{product.Product.Category.Name}}</small>
-                    <progress max="100" value="50"></progress>
+                    Categoty: <small>{{product.Product.Category.Name}}</small>
+                    <br/>
+                    Expires in... <strong>{{product.freshness}}</strong> days
+                    <br/>
+                    <progress style="background-color: green;" max="100" value="{{product.lifetimePercent}}"></progress>
                 </a>
             </div>
         </ion-list>

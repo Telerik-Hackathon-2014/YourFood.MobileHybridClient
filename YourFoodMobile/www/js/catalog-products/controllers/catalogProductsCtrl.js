@@ -3,7 +3,6 @@
 app.controller('CatalogProductsCtrl', function ($scope, $rootScope, catalogProductsData, productsCategoriesData, notifier) {
 
     $rootScope.catalogProductsFilters = {};
-    $rootScope.data = 'dfjlghdfjkghdfj';
     $rootScope.tab = $rootScope.tab || {};
 
     function showAvailableProductsTab() {

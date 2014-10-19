@@ -7,6 +7,7 @@ app.controller('CatalogProductDetailsCtrl', function ($scope, $stateParams, $loc
     function GetCurrentCatalogProductById(id) {
         catalogProductsData.getCatalogProductById(id,
             function (data) {
+                console.log(data);
                 $scope.catalogProduct = data;
             })
     }
