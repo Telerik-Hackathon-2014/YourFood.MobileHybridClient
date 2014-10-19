@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('MainCtrl', function ($scope, identity, cameraData, notifier) {
+app.controller('MainCtrl', function ($scope, $rootScope, identity, cameraData, notifier) {
 
     $scope.takePictureForShoppingList = function () {
         document.addEventListener('deviceready', function () {
@@ -22,7 +22,7 @@ app.controller('MainCtrl', function ($scope, identity, cameraData, notifier) {
         });
     };
 
-    $scope.isLogged = function () {
+    $rootScope.isLogged = function () {
         return  identity.isAuthenticated();
     };
 

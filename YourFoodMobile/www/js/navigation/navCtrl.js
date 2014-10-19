@@ -1,8 +1,8 @@
 'use strict';
 
-app.controller('NavCtrl', function ($scope, $ionicSideMenuDelegate, identity) {
+app.controller('NavCtrl', function ($scope, $rootScope, $ionicSideMenuDelegate, identity) {
 
-    $scope.isLogged = function () {
+    $rootScope.isUserLogged = function () {
         return identity.isAuthenticated();
     };
 
